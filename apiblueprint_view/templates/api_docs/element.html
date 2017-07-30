@@ -1,0 +1,25 @@
+{% for element in root %}
+  {% if element.element %}
+    {% if element.element == 'copy' %}
+      {% include 'api_docs/copy.html' with element=element styles=styles only %}
+    {% elif element.element == 'category' %}
+      {% include 'api_docs/resource_group.html' with element=element styles=styles only %}
+    {% elif element.element == 'resource' %}
+      {% include 'api_docs/resource.html' with element=element styles=styles only %}
+    {% elif element.element == 'transition' %}
+      {% include 'api_docs/transition.html' with element=element styles=styles only %}
+    {% elif element.element == 'httpTransaction' %}
+      {% include 'api_docs/transaction.html' with element=element styles=styles only %}
+    {% elif element.element == 'httpRequest' %}
+      {% include 'api_docs/request.html' with element=element styles=styles only %}
+    {% elif element.element == 'httpResponse' %}
+      {% include 'api_docs/response.html' with element=element styles=styles only %}
+    {% elif element.element == 'member' %}
+      {# pass #}
+    {% elif element.element == 'asset' %}
+      {% include 'api_docs/asset.html' with element=element styles=styles only %}
+    {% elif element.element == 'dataStructure' %}
+      {# pass #}
+    {% endif %}
+  {% endif %}
+{% endfor %}

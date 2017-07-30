@@ -1,0 +1,20 @@
+<div class="{{ styles.action_response.class }}">
+  {% if element.title %}
+    <h5 id="{{ element.title.content|slugify }}-5">
+      {{ element.title.content }}&nbsp;<a
+        href="#{{ element.title.content|slugify }}-5"
+        class="permalink">&para;</a>
+    </h5>
+  {% endif %}
+  Response <code>{{ element.status_code.content }}</code>
+
+  {% if element.headers %}
+    <div class="{{ styles.action_headers.class }}">
+      Headers:
+      <pre>
+{% for header in element.headers.content %}{{ header.key.content }}: {{ header.value.content }}
+{% endfor %}</pre>
+    </div>
+  {% endif %}
+{% include 'api_docs/element.html' with root=element.content styles=styles only %}
+</div>

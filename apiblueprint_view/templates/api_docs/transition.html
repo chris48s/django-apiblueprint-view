@@ -1,0 +1,10 @@
+<div class="{{ styles.action.class }}">
+  {% if element.title %}
+    <h4 id="{{ element.title.content|slugify }}-4">
+      {{ element.title.content }}&nbsp;<a
+        href="#{{ element.title.content|slugify }}-4"
+        class="permalink">&para;</a>
+    </h4>
+  {% endif %}
+  {% include 'api_docs/element.html' with root=element.content styles=styles only %}
+</div>

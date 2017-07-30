@@ -1,0 +1,22 @@
+{% load dict_utils %}
+<div class="{{ styles.action_request.class }}">
+  {% if element.title %}
+    <h5 id="{{ element.title.content|slugify }}-5">
+      {{ element.title.content }}&nbsp;<a
+        href="#{{ element.title.content|slugify }}-5"
+        class="permalink">&para;</a>
+    </h5>
+  {% endif %}
+  Request <span class="{{ styles.method.class }} {{ styles|get_class:element.method.content }}">{{ element.method.content }}</span>
+  <code>{{ element.attributes.href.content }}</code>
+
+  {% if element.headers %}
+    <div class="{{ styles.action_headers.class }}">
+      Headers:
+      <pre>
+{% for header in element.headers.content %}{{ header.key.content }}: {{ header.value.content }}
+{% endfor %}</pre>
+    </div>
+  {% endif %}
+{% include 'api_docs/element.html' with root=element.content styles=styles only %}
+</div>

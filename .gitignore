@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+build/
+dist/
+django_apiblueprint_view.egg-info/

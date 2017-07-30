@@ -1,0 +1,17 @@
+<div class="{{ styles.resource.class }}">
+  {% if element.title %}
+    <h3 id="{{ element.title.content|slugify }}-3">
+      {{ element.title.content }}&nbsp;<a
+        href="#{{ element.title.content|slugify }}-3"
+        class="permalink">&para;</a>
+    </h3>
+  {% endif %}
+  <code>{{ element.attributes.href.content }}</code>
+  <div class="{{ styles.action_example.class }}">
+    Example:
+    <a href="{{ element.attributes.hrefExample.content }}">
+      <code>{{ element.attributes.hrefExample.content }}</code>
+    </a>
+  </div>
+  {% include 'api_docs/element.html' with root=element.content styles=styles only %}
+</div>

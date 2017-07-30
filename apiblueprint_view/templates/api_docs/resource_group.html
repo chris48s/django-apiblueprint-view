@@ -1,0 +1,10 @@
+<div class="{{ styles.resource_group.class }}">
+  {% if element.title %}
+    <h2 id="{{ element.title.content|slugify }}-2">
+      {{ element.title.content }}&nbsp;<a
+        href="#{{ element.title.content|slugify }}-2"
+        class="permalink">&para;</a>
+    </h2>
+  {% endif %}
+  {% include 'api_docs/element.html' with root=element.content styles=styles only %}
+</div>
