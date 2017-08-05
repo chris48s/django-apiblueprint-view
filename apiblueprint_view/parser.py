@@ -21,52 +21,44 @@ class ApibpParser:
             if element.key.content == 'HOST':
                 self.host = element.value.content
 
-    def _make_examples(self, root):
-        for element in root:
-            if hasattr(element, 'element'):
-                if element.element == 'resource':
-                    if element.attributes['href'].content:
-                        element.attributes['hrefExample'] =\
-                        copy.copy(element.attributes['href'])
-                    if self.host:
-                        element.attributes['hrefExample'].content =\
-                        self.host + element.attributes['hrefExample'].content
-                    if 'hrefVariables' in element.attributes:
-                        replacements = {
-                            var.key.content: var.value.content for\
-                            var in element.attributes['hrefVariables'].content
-                        }
-                        try:
-                            element.attributes['hrefExample'].content =\
-                            element.attributes['hrefExample'].content.format(
-                                **replacements)
-                        except KeyError:
-                            pass
-                try:
-                    self._make_examples(element.content)
-                except TypeError:
-                    pass
+    def _make_example(self, element):
+        if element.attributes['href'].content:
+            element.attributes['hrefExample'] =\
+            copy.copy(element.attributes['href'])
+        if self.host:
+            element.attributes['hrefExample'].content =\
+            self.host + element.attributes['hrefExample'].content
+        if 'hrefVariables' in element.attributes:
+            replacements = {
+                var.key.content: var.value.content for\
+                var in element.attributes['hrefVariables'].content
+            }
+            try:
+                element.attributes['hrefExample'].content =\
+                element.attributes['hrefExample'].content.format(
+                    **replacements)
+            except KeyError:
+                pass
 
-    def _propogate_hrefs(self, root):
-        for element in root:
-            if hasattr(element, 'element'):
-                if element.element == 'resource':
-                    for transition in element.transitions:
-                        for transaction in transition.transactions:
-                            transaction.request.attributes['href'] =\
-                            element.attributes['href']
-                try:
-                    self._propogate_hrefs(element.content)
-                except TypeError:
-                    pass
+    def _propogate_hrefs(self, element):
+        for transition in element.transitions:
+            for transaction in transition.transactions:
+                transaction.request.attributes['href'] =\
+                element.attributes['href']
 
-    def _parse_markdown(self, root):
+    def _parse_markdown(self, element):
+        element.content = markdown2.markdown(element.content)
+
+    def _post_process(self, root):
         for element in root:
             if hasattr(element, 'element'):
                 if element.element == 'copy':
-                    element.content = markdown2.markdown(element.content)
+                    self._parse_markdown(element)
+                if element.element == 'resource':
+                    self._make_example(element)
+                    self._propogate_hrefs(element)
                 try:
-                    self._parse_markdown(element.content)
+                    self._post_process(element.content)
                 except TypeError:
                     pass
 
@@ -74,8 +66,6 @@ class ApibpParser:
         self.api = parse(open(os.path.abspath(self.blueprint), 'r').read())
 
         self._set_host()
-        self._make_examples(self.api[0])
-        self._propogate_hrefs(self.api[0])
-        self._parse_markdown(self.api[0])
+        self._post_process(self.api[0])
 
         return self.api
