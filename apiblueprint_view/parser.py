@@ -1,4 +1,5 @@
 import copy
+import markdown2
 import os
 from draughtsman import parse
 
@@ -59,11 +60,22 @@ class ApibpParser:
                 except TypeError:
                     pass
 
+    def _parse_markdown(self, root):
+        for element in root:
+            if hasattr(element, 'element'):
+                if element.element == 'copy':
+                    element.content = markdown2.markdown(element.content)
+                try:
+                    self._parse_markdown(element.content)
+                except TypeError:
+                    pass
+
     def parse(self):
         self.api = parse(open(os.path.abspath(self.blueprint), 'r').read())
 
         self._set_host()
         self._make_examples(self.api[0])
         self._propogate_hrefs(self.api[0])
+        self._parse_markdown(self.api[0])
 
         return self.api

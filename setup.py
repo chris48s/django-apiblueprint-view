@@ -14,6 +14,6 @@ setup(
     url='https://github.com/chris48s/django-apiblueprint-view',
     install_requires=[
         'draughtsman',
-        'django-markdown-deux',
+        'markdown2',
     ]
 )

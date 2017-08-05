@@ -23,7 +23,6 @@ sudo cp src/drafter.h /usr/include/drafter/drafter.h
 INSTALLED_APPS = [
     ...
     'apiblueprint_view',
-    'markdown_deux',
 ]
 ```
 
