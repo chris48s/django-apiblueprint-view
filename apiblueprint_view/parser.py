@@ -1,6 +1,7 @@
 import copy
 import markdown2
 import os
+import re
 from draughtsman import parse
 
 
@@ -12,7 +13,7 @@ class ApibpParser:
     """
 
     def __init__(self, blueprint):
-        self.blueprint = blueprint
+        self.blueprint = os.path.abspath(blueprint)
         self.api = None
         self.host = None
 
@@ -49,6 +50,20 @@ class ApibpParser:
     def _parse_markdown(self, element):
         element.content = markdown2.markdown(element.content)
 
+    def _replace_includes(self, apibp):
+        matches = re.findall(r'<!-- include\((.*)\) -->', apibp)
+        for match in matches:
+            include_path = os.path.join(os.path.dirname(self.blueprint), match)
+
+            # recursively replace any includes in child files
+            include_apibp = self._replace_includes(
+                open(include_path, 'r').read())
+
+            apibp = apibp.replace(
+                '<!-- include(' + match + ') -->', include_apibp)
+
+        return apibp
+
     def _post_process(self, root):
         for element in root:
             if hasattr(element, 'element'):
@@ -63,8 +78,8 @@ class ApibpParser:
                     pass
 
     def parse(self):
-        self.api = parse(open(os.path.abspath(self.blueprint), 'r').read())
-
+        apibp = self._replace_includes(open(self.blueprint, 'r').read())
+        self.api = parse(apibp)
         self._set_host()
         self._post_process(self.api[0])
 
