@@ -6,7 +6,7 @@
         class="permalink">&para;</a>
     </h5>
   {% endif %}
-  Response <code>{{ element.status_code.content }}</code>
+  Response <code class="api-http-code">{{ element.status_code.content }}</code>
 
   {% if element.headers %}
     <div class="{{ styles.action_headers.class }}">
