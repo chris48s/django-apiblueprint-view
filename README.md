@@ -102,6 +102,8 @@ The following keys are valid. All keys are optional:
 * `'resource'`: Container `<div>` for an API resource
 * `'resource_group'`: Container `<div>` for an API resource group
 
+[Highlight.js](https://highlightjs.org/) can be used to add syntax highlighting
+
 ## Licensing
 
 `django-apiblueprint-view` is made available under the MIT License

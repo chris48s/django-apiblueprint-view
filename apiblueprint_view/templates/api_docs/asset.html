@@ -1,11 +1,11 @@
 {% if element.classes.content.0.content == 'messageBodySchema' %}
   <div class="{{ styles.action_schema.class }}">
     Schema:
-    <pre>{{ element.content }}</pre>
+    <pre><code>{{ element.content }}</code></pre>
   </div>
 {% else %}
   <div class="{{ styles.action_body.class }}">
     Body:
-    <pre>{{ element.content }}</pre>
+    <pre><code>{{ element.content }}</code></pre>
   </div>
 {% endif %}
