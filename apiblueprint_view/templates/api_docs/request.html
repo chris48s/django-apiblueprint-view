@@ -13,8 +13,7 @@
   {% if element.headers %}
     <div class="{{ styles.action_headers.class }}">
       Headers:
-      <pre><code>
-{% for header in element.headers.content %}{{ header.key.content }}: {{ header.value.content }}
+      <pre><code>{% for header in element.headers.content %}{{ header.key.content }}: {{ header.value.content }}
 {% endfor %}</code></pre>
     </div>
   {% endif %}
