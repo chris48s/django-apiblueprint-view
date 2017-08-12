@@ -89,6 +89,7 @@ The following keys are valid. All keys are optional:
 * `'action_body'`: Container `<div>` for a HTTP request or response body
 * `'action_example'`: Container `<div>` for an API action example URL
 * `'description'`: Container `<div>` for some text describing an action, resource, request, response, etc
+* `'parameters'`: Container `<div>` for a list of parameters
 * `'method'`: Generic `<span>` containing an HTTP method
 * `'method_CONNECT'`: `<span>` containing the text `CONNECT`
 * `'method_DELETE'`: `<span>` containing the text `DELETE`

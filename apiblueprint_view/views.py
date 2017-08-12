@@ -22,6 +22,7 @@ BASE_STYLES = {
     'method_POST': { 'class': 'api-method-POST'},
     'method_PUT': { 'class': 'api-method-PUT'},
     'method_TRACE': { 'class': 'api-method-TRACE'},
+    'parameters': { 'class': 'api-parameters'},
     'resource': { 'class': 'api-resource'},
     'resource_group': { 'class': 'api-resource-group'},
 }

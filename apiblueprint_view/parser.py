@@ -72,6 +72,10 @@ class ApibpParser:
                 if element.element == 'resource':
                     self._make_example(element)
                     self._propogate_hrefs(element)
+                    if 'hrefVariables' in element.attributes:
+                        for param in element.attributes['hrefVariables'].content:
+                            if hasattr(param, 'description'):
+                                self._parse_markdown(param.description)
                 try:
                     self._post_process(element.content)
                 except TypeError:

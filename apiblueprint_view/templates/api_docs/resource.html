@@ -13,5 +13,37 @@
       <code>{{ element.attributes.hrefExample.content }}</code>
     </a>
   </div>
+
+  {% if element.attributes.hrefVariables %}
+    <div class="{{ styles.parameters.class }}">
+      <h4>Parameters</h4>
+        <ul>
+          {% for param in element.attributes.hrefVariables.content %}
+            <li>
+              <p>
+                <strong>{{ param.content.key.content }}</strong>
+
+                {% if param.title.content %}<code>{{ param.title.content }}</code>{% endif %}
+
+                {% if param.attributes.typeAttributes %}
+                  ({% for attribute in param.attributes.typeAttributes.content %}
+                    {{ attribute.content }}
+                  {% endfor %})
+                {% endif %}
+              </p>
+
+              {% if param.description %}
+                <p>{{ param.description.content|safe }}</p>
+              {% endif %}
+
+              {% if param.content.value %}
+                <p>Example: <code>{{ param.content.value.content }}</code></p>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+  {% endif %}
+
   {% include 'api_docs/element.html' with root=element.content styles=styles only %}
 </div>
