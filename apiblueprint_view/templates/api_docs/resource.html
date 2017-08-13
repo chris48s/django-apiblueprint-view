@@ -33,7 +33,7 @@
               </p>
 
               {% if param.description %}
-                <p>{{ param.description.content|safe }}</p>
+                {{ param.description.content|safe }}
               {% endif %}
 
               {% if param.content.value %}
