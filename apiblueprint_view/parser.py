@@ -75,7 +75,10 @@ class ApibpParser:
                     if 'hrefVariables' in element.attributes:
                         for param in element.attributes['hrefVariables'].content:
                             if hasattr(param, 'description'):
-                                self._parse_markdown(param.description)
+                                try:
+                                    self._parse_markdown(param.description)
+                                except AttributeError:
+                                    pass
                 try:
                     self._post_process(element.content)
                 except TypeError:
