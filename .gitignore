@@ -3,3 +3,4 @@ __pycache__/
 build/
 dist/
 django_apiblueprint_view.egg-info/
+.eggs/
