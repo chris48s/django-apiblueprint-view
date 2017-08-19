@@ -1,5 +1,8 @@
 # django-apiblueprint-view
 
+[![Build Status](https://travis-ci.org/chris48s/django-apiblueprint-view.svg?branch=master)](https://travis-ci.org/chris48s/django-apiblueprint-view)
+[![Coverage Status](https://coveralls.io/repos/github/chris48s/django-apiblueprint-view/badge.svg?branch=master)](https://coveralls.io/github/chris48s/django-apiblueprint-view?branch=master)
+
 Render API Blueprints on-the-fly using Django templates
 
 ## Installation
