@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 build/
+.coverage
 dist/
 django_apiblueprint_view.egg-info/
 .eggs/
