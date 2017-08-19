@@ -1,2 +1,5 @@
 beautifulsoup4
 coverage
+draughtsman
+markdown2
+python-coveralls
