@@ -22,7 +22,7 @@ if not settings.configured:
             'django.contrib.contenttypes',
             'apiblueprint_view',
         ),
-        TEMPLATES = [
+        TEMPLATES=[
             {
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
                 'APP_DIRS': True,

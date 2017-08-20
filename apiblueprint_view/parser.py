@@ -25,10 +25,10 @@ class ApibpParser:
     def _make_example(self, element):
         if element.attributes['href'].content:
             element.attributes['hrefExample'] =\
-            copy.copy(element.attributes['href'])
+                copy.copy(element.attributes['href'])
         if self.host:
             element.attributes['hrefExample'].content =\
-            self.host + element.attributes['hrefExample'].content
+                self.host + element.attributes['hrefExample'].content
         if 'hrefVariables' in element.attributes:
             replacements = {
                 var.key.content: var.value.content for\
@@ -36,8 +36,8 @@ class ApibpParser:
             }
             try:
                 element.attributes['hrefExample'].content =\
-                element.attributes['hrefExample'].content.format(
-                    **replacements)
+                    element.attributes['hrefExample'].content.format(
+                        **replacements)
             except KeyError:
                 pass
 
@@ -45,7 +45,7 @@ class ApibpParser:
         for transition in element.transitions:
             for transaction in transition.transactions:
                 transaction.request.attributes['href'] =\
-                element.attributes['href']
+                    element.attributes['href']
 
     def _parse_markdown(self, element):
         element.content = markdown2.markdown(element.content)

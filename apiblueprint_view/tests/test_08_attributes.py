@@ -42,6 +42,7 @@ coupon_schema = """
 }</code></pre>
 </div>"""
 
+
 class AttributesTest(ApibpTest):
 
     def test(self):
