@@ -29,6 +29,12 @@ INSTALLED_APPS = [
 ]
 ```
 
+## Platform Support
+
+`django-apiblueprint-view` is tested under:
+* Python 3.4 and 3.5
+* Django 1.8, 1.9, 1.10 and 1.11
+
 ## Usage
 
 ```python
@@ -108,6 +114,32 @@ The following keys are valid. All keys are optional:
 
 [Highlight.js](https://highlightjs.org/) can be used to add syntax highlighting
 
+### Including Files
+
+You can include other files in your blueprint by using an include directive with a path to the included file relative to the current file's directory. Included files can include other files, so be careful of circular references.
+
+```
+<!-- include(filename.md) -->
+```
+
+This syntax is not a part of the API Blueprint spec, but is also supported in some other tools e.g: [aglio](https://github.com/danielgtaylor/aglio#including-files).
+
 ## Licensing
 
 `django-apiblueprint-view` is made available under the MIT License
+
+## Development
+
+Build and install locally:
+
+```
+python setup.py sdist
+pip install --upgrade dist/django-apiblueprint-view-x.y.z.tar.gz
+```
+
+Run the tests locally:
+
+```
+pip install -r testing_requirements.txt
+./run_tests.py
+```
