@@ -15,5 +15,6 @@ setup(
     install_requires=[
         'draughtsman',
         'markdown2',
+        'typing',
     ]
 )
