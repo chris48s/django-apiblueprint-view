@@ -13,10 +13,6 @@ addons:
       - g++-5
 install:
   - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
-  - python setup.py install
-  - pip install --upgrade pip
-  - pip install -r testing_requirements.txt
-  - pip install "Django>=1.11,<1.12"
   - git clone --recursive git://github.com/apiaryio/drafter.git
   - cd drafter
   - git checkout v3.2.7
@@ -27,6 +23,10 @@ install:
   - sudo cp src/drafter.h /usr/include/drafter/drafter.h
   - cd ..
   - rm -rf drafter/
+  - python setup.py install
+  - pip install --upgrade pip
+  - pip install -r testing_requirements.txt
+  - pip install "Django>=1.11,<1.12"
 script:
   - coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
 after_success:
