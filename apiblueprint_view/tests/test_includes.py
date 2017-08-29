@@ -1,3 +1,4 @@
+from django.core.exceptions import SuspiciousFileOperation
 from .base import ApibpTest
 
 
@@ -41,3 +42,7 @@ class IncludesTest(ApibpTest):
 
             self.assertNotInIgnoreFormatting(response_body, html)
             self.assertInIgnoreFormatting(comment, html)
+
+    def test_include_suspicious(self):
+        with self.assertRaises(SuspiciousFileOperation):
+            self.get_response('apiblueprint_view/tests/fixtures/suspicious.md')

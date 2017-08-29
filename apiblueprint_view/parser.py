@@ -3,6 +3,7 @@ import markdown2
 import os
 import re
 from django.conf import settings
+from django.utils._os import safe_join
 from draughtsman import parse
 
 
@@ -56,7 +57,7 @@ class ApibpParser:
     def _replace_includes(self, apibp):
         matches = re.findall(r'<!-- include\((.*)\) -->', apibp)
         for match in matches:
-            include_path = os.path.join(os.path.dirname(self.blueprint), match)
+            include_path = safe_join(os.path.dirname(self.blueprint), match)
 
             # recursively replace any includes in child files
             include_apibp = self._replace_includes(
