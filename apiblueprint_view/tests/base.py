@@ -28,3 +28,15 @@ class ApibpTest(TestCase):
             "\n".join([x.strip() for x in needle_formatted.split("\n")]),
             "\n".join([x.strip() for x in haystack_formatted.split("\n")]),
         )
+
+    def assertNotInIgnoreFormatting(self, needle, haystack):
+        # use bs4 to standardise the formatting of both chunks of html
+        needle_formatted = BeautifulSoup(needle, "html.parser").prettify()
+        haystack_formatted = BeautifulSoup(haystack, "html.parser").prettify()
+
+        # then strip the leading/trailing whitespace when we
+        # compare to account for indentation differences
+        self.assertNotIn(
+            "\n".join([x.strip() for x in needle_formatted.split("\n")]),
+            "\n".join([x.strip() for x in haystack_formatted.split("\n")]),
+        )

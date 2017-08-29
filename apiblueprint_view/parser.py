@@ -2,6 +2,7 @@ import copy
 import markdown2
 import os
 import re
+from django.conf import settings
 from draughtsman import parse
 
 
@@ -16,6 +17,8 @@ class ApibpParser:
         self.blueprint = os.path.abspath(blueprint)
         self.api = None
         self.host = None
+        self.process_includes = getattr(
+            settings, 'APIBP_PROCESS_INCLUDES', True)
 
     def _set_host(self):
         for element in self.api.content[0].attributes['meta']:
@@ -85,7 +88,9 @@ class ApibpParser:
                     pass
 
     def parse(self):
-        apibp = self._replace_includes(open(self.blueprint, 'r').read())
+        apibp = open(self.blueprint, 'r').read()
+        if self.process_includes:
+            apibp = self._replace_includes(apibp)
         self.api = parse(apibp)
         self._set_host()
         self._post_process(self.api[0])
