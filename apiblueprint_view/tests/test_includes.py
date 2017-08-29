@@ -43,6 +43,11 @@ class IncludesTest(ApibpTest):
             self.assertNotInIgnoreFormatting(response_body, html)
             self.assertInIgnoreFormatting(comment, html)
 
-    def test_include_suspicious(self):
+    def test_include_suspicious_outside_project_dir(self):
         with self.assertRaises(SuspiciousFileOperation):
             self.get_response('apiblueprint_view/tests/fixtures/suspicious.md')
+
+    def test_include_suspicious_not_in_whitelist(self):
+        with self.settings(APIBP_INCLUDE_WHITELIST=['.apibp', '.json']):
+            with self.assertRaises(SuspiciousFileOperation):
+                self.get_response('apiblueprint_view/tests/fixtures/parent.md')

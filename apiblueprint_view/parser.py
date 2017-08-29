@@ -3,6 +3,7 @@ import markdown2
 import os
 import re
 from django.conf import settings
+from django.core.exceptions import SuspiciousFileOperation
 from django.utils._os import safe_join
 from draughtsman import parse
 
@@ -20,6 +21,8 @@ class ApibpParser:
         self.host = None
         self.process_includes = getattr(
             settings, 'APIBP_PROCESS_INCLUDES', True)
+        self.include_whitelist = getattr(
+            settings, 'APIBP_INCLUDE_WHITELIST', ['.md', '.apibp', '.json'])
 
     def _set_host(self):
         for element in self.api.content[0].attributes['meta']:
@@ -54,10 +57,16 @@ class ApibpParser:
     def _parse_markdown(self, element):
         element.content = markdown2.markdown(element.content)
 
+    def _is_whitelisted(self, filename):
+        return True in [filename.endswith(ext) for ext in self.include_whitelist]
+
     def _replace_includes(self, apibp):
         matches = re.findall(r'<!-- include\((.*)\) -->', apibp)
         for match in matches:
             include_path = safe_join(os.path.dirname(self.blueprint), match)
+
+            if not self._is_whitelisted(include_path):
+                raise SuspiciousFileOperation("extension not in whitelist")
 
             # recursively replace any includes in child files
             include_apibp = self._replace_includes(
