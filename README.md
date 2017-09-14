@@ -10,8 +10,9 @@ Render API Blueprints on-the-fly using Django templates
 1. `django-apiblueprint-view` uses the [Drafter](https://github.com/apiaryio/drafter) C library for API Blueprint parsing. Install it using:
 
 ```
-git clone --recursive git://github.com/apiaryio/drafter.git
-cd drafter
+wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
+tar xvzf drafter-v3.2.7.tar.gz
+cd drafter-v3.2.7
 ./configure --shared
 make libdrafter
 sudo cp build/out/Release/lib.target/libdrafter.so /usr/lib/libdrafter.so
