@@ -10,8 +10,9 @@ Render API Blueprints on-the-fly using Django templates
 1. `django-apiblueprint-view` uses the [Drafter](https://github.com/apiaryio/drafter) C library for API Blueprint parsing. Install it using:
 
 ```
-git clone --recursive git://github.com/apiaryio/drafter.git
-cd drafter
+wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
+tar xvzf drafter-v3.2.7.tar.gz
+cd drafter-v3.2.7
 ./configure --shared
 make libdrafter
 sudo cp build/out/Release/lib.target/libdrafter.so /usr/lib/libdrafter.so
@@ -123,6 +124,8 @@ You can include other files in your blueprint by using an include directive with
 ```
 
 This syntax is not a part of the API Blueprint spec, but is also supported in some other tools e.g: [aglio](https://github.com/danielgtaylor/aglio#including-files).
+
+The include directive has the potential to introduce remote file inclusion or directory traversal vulnerabilities if your application renders user-supplied content. There are a couple of settings to help mitigate this. Set `APIBP_PROCESS_INCLUDES = False` in your django settings to completely ignore include directives (the default is `True`). There is also a whitelist of allowed file types to include. The default whitelist is `['.md', '.apibp', '.json']` but this can be overridden by setting `APIBP_INCLUDE_WHITELIST` to a list of allowed extensions in your django settings.
 
 ## Licensing
 
