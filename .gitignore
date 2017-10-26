@@ -5,3 +5,4 @@ build/
 dist/
 django_apiblueprint_view.egg-info/
 .eggs/
+README.rst

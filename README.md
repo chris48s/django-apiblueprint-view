@@ -19,7 +19,7 @@ sudo cp build/out/Release/lib.target/libdrafter.so /usr/lib/libdrafter.so
 sudo cp src/drafter.h /usr/include/drafter/drafter.h
 ```
 
-2. `pip install git+https://github.com/chris48s/django-apiblueprint-view.git`
+2. `pip install django-apiblueprint-view`
 
 3. Add to `INSTALLED_APPS` in django settings:
 
