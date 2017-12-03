@@ -33,8 +33,8 @@ INSTALLED_APPS = [
 ## Platform Support
 
 `django-apiblueprint-view` is tested under:
-* Python 3.4 and 3.5
-* Django 1.8, 1.9, 1.10 and 1.11
+* Python 3.4, 3.5 and 3.6
+* Django 1.8, 1.9, 1.10, 1.11 and 2.0
 
 ## Usage
 
