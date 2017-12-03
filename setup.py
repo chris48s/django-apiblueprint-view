@@ -14,7 +14,7 @@ def _get_description():
 
 setup(
     name='django-apiblueprint-view',
-    version='1.1.1',
+    version='1.1.2',
     author="chris48s",
     license="MIT",
     packages=find_packages(),
