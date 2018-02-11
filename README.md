@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/chris48s/django-apiblueprint-view.svg?branch=master)](https://travis-ci.org/chris48s/django-apiblueprint-view)
 [![Coverage Status](https://coveralls.io/repos/github/chris48s/django-apiblueprint-view/badge.svg?branch=master)](https://coveralls.io/github/chris48s/django-apiblueprint-view?branch=master)
+![PyPI Version](https://img.shields.io/pypi/v/django-apiblueprint-view.svg)
+![License](https://img.shields.io/pypi/l/django-apiblueprint-view.svg)
+![Python Support](https://img.shields.io/pypi/pyversions/django-apiblueprint-view.svg)
+![Django Support](https://img.shields.io/pypi/djversions/django-apiblueprint-view.svg)
 
 Render [API Blueprints](https://apiblueprint.org/) on-the-fly using Django templates
 
@@ -29,12 +33,6 @@ INSTALLED_APPS = [
     'apiblueprint_view',
 ]
 ```
-
-## Platform Support
-
-`django-apiblueprint-view` is tested under:
-* Python 3.4, 3.5 and 3.6
-* Django 1.8, 1.9, 1.10, 1.11 and 2.0
 
 ## Usage
 
@@ -126,10 +124,6 @@ You can include other files in your blueprint by using an include directive with
 This syntax is not a part of the API Blueprint spec, but is also supported in some other tools e.g: [aglio](https://github.com/danielgtaylor/aglio#including-files).
 
 The include directive has the potential to introduce remote file inclusion or directory traversal vulnerabilities if your application renders user-supplied content. There are a couple of settings to help mitigate this. Set `APIBP_PROCESS_INCLUDES = False` in your django settings to completely ignore include directives (the default is `True`). There is also a whitelist of allowed file types to include. The default whitelist is `['.md', '.apibp', '.json']` but this can be overridden by setting `APIBP_INCLUDE_WHITELIST` to a list of allowed extensions in your django settings.
-
-## Licensing
-
-`django-apiblueprint-view` is made available under the MIT License
 
 ## Development
 
