@@ -32,7 +32,7 @@ install:
   - cd ..
   - rm -rf drafter-v3.2.7/
   - rm drafter-v3.2.7.tar.gz
-  - pip install --upgrade pipenv
+  - "pip install pipenv==11.10.0"
   - pipenv install --dev
   - python setup.py install
   - "pip install Django$DJANGO_VERSION"
