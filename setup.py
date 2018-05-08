@@ -28,6 +28,11 @@ setup(
         'markdown2',
         'typing',
     ],
+    extras_require={
+        'testing': [
+            'python-coveralls',
+        ]
+    },
     classifiers=[
         'Framework :: Django',
         'Framework :: Django :: 1.8',
