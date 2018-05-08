@@ -18,8 +18,8 @@ json_header = """
 update_request = """
 <div class="api-action-request">
   <h5 id="update-plain-text-message-5">
-    Update Plain Text Message
-    <a class="permalink" href="#update-plain-text-message-5">¶</a>
+    Update Plain Text Message&nbsp;
+    <a class="permalink" href="#update-plain-text-message-5">&para;</a>
   </h5>
   Request
   <span class="api-method api-method-PUT">PUT</span>
@@ -43,8 +43,7 @@ class RequestsTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/06. Requests.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(text_header, html)
-        self.assertInIgnoreFormatting(json_header, html)
-        self.assertInIgnoreFormatting(update_request, html)
+        self.assertContains(response, text_header, html=True)
+        self.assertContains(response, json_header, html=True)
+        self.assertContains(response, update_request, html=True)

@@ -20,8 +20,8 @@ class IncludesTest(ApibpTest):
         self.assertEqual(response.status_code, 200)
         html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(response_body, html)
-        self.assertNotInIgnoreFormatting(comment, html)
+        self.assertContains(response, response_body, html=True)
+        self.assertNotIn(comment, html)
 
     def test_include_setting_on(self):
         with self.settings(APIBP_PROCESS_INCLUDES=True):
@@ -30,8 +30,8 @@ class IncludesTest(ApibpTest):
             self.assertEqual(response.status_code, 200)
             html = self.get_html(response)
 
-            self.assertInIgnoreFormatting(response_body, html)
-            self.assertNotInIgnoreFormatting(comment, html)
+            self.assertContains(response, response_body, html=True)
+            self.assertNotIn(comment, html)
 
     def test_include_setting_off(self):
         with self.settings(APIBP_PROCESS_INCLUDES=False):
@@ -40,8 +40,8 @@ class IncludesTest(ApibpTest):
             self.assertEqual(response.status_code, 200)
             html = self.get_html(response)
 
-            self.assertNotInIgnoreFormatting(response_body, html)
-            self.assertInIgnoreFormatting(comment, html)
+            self.assertNotContains(response, response_body, html=True)
+            self.assertIn(comment, html)
 
     def test_include_suspicious_outside_project_dir(self):
         with self.assertRaises(SuspiciousFileOperation):

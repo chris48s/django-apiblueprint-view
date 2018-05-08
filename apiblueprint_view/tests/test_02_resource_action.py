@@ -37,4 +37,4 @@ class ResourceActionTest(ApibpTest):
         # the group, the resource and 2 actions
         self.assertEqual(4, html.count('<div class="api-description">'))
 
-        self.assertInIgnoreFormatting(put_response, html)
+        self.assertContains(response, put_response, html=True)
