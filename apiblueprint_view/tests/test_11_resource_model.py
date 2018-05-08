@@ -1,7 +1,7 @@
 from .base import ApibpTest
 
 
-retrieve_resp = """
+retrieve_desc = """
 <div class="api-description">
   <p>
     At this point we will utilize our
@@ -9,7 +9,19 @@ retrieve_resp = """
     resource model and reference it in
     <code>Response 200</code>.
   </p>
-</div>
+</div>"""
+
+retrieve_json = """{
+  "class": [ "message" ],
+  "properties": {
+    "message": "Hello World!"
+  },
+  "links": [
+    { "rel": "self" , "href": "/message" }
+  ]
+}""".replace('"', '&quot;')
+
+retrieve_resp = """
 <div class="api-action-transaction">
   <div class="api-action-request">
     Request
@@ -34,15 +46,7 @@ Location: http://api.acme.com/message
     </div>
     <div class="api-action-body">
        Body:
-       <pre><code>{
-  "class": [ "message" ],
-  "properties": {
-    "message": "Hello World!"
-  },
-  "links": [
-    { "rel": "self" , "href": "/message" }
-  ]
-}
+       <pre><code>""" + retrieve_json + """
 </code></pre>
     </div>
   </div>
@@ -55,6 +59,6 @@ class ResourceModelTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/11. Resource Model.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(retrieve_resp, html)
+        self.assertContains(response, retrieve_desc, html=True)
+        self.assertContains(response, retrieve_resp, html=True)

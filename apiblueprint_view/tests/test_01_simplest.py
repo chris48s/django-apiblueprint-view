@@ -31,7 +31,6 @@ class SimplestTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/01. Simplest API.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(action_request, html)
-        self.assertInIgnoreFormatting(action_response, html)
+        self.assertContains(response, action_request, html=True)
+        self.assertContains(response, action_response, html=True)

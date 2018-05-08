@@ -1,22 +1,22 @@
 from .base import ApibpTest
 
 
-coupon_body = """
-<div class="api-action-body">
-  Body:
-  <pre><code>{
+body_json = """{
   "percent_off": 25,
   "redeem_by": 0,
   "id": "250FF",
   "created": 1415203908
-}</code></pre>
+}""".replace('"', '&quot;')
+
+coupon_body = """
+<div class="api-action-body">
+  Body:
+  <pre><code>""" + body_json + """</code></pre>
 </div>
 """
 
-coupon_schema = """
-<div class="api-action-schema">
-  Schema:
-  <pre><code>{
+
+schema_json = """{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -39,7 +39,12 @@ coupon_schema = """
   "required": [
     "id"
   ]
-}</code></pre>
+}""".replace('"', '&quot;')
+
+coupon_schema = """
+<div class="api-action-schema">
+  Schema:
+  <pre><code>""" + schema_json + """</code></pre>
 </div>"""
 
 
@@ -49,7 +54,6 @@ class DataStructuresTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/10. Data Structures.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(coupon_body, html)
-        self.assertInIgnoreFormatting(coupon_schema, html)
+        self.assertContains(response, coupon_body, html=True)
+        self.assertContains(response, coupon_schema, html=True)

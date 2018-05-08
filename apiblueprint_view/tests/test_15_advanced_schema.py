@@ -1,7 +1,7 @@
 from .base import ApibpTest
 
 
-custom_schema_attribute = '"description": "This is a custom schema!",'
+custom_schema_attribute = '&quot;description&quot;: &quot;This is a custom schema!&quot;,'
 
 
 class AdvancedSchemaTest(ApibpTest):
@@ -10,6 +10,5 @@ class AdvancedSchemaTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/15. Advanced JSON Schema.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(custom_schema_attribute, html)
+        self.assertContains(response, custom_schema_attribute)

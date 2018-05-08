@@ -38,7 +38,6 @@ class ParametersTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/07. Parameters.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(example_url, html)
-        self.assertInIgnoreFormatting(params_description, html)
+        self.assertContains(response, example_url, html=True)
+        self.assertContains(response, params_description, html=True)

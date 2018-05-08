@@ -30,7 +30,7 @@ X-My-Message-Header: 42
   </div>
   <div class="api-action-body">
     Body:
-    <pre><code>{ "message": "Hello World!" }
+    <pre><code>{ &quot;message&quot;: &quot;Hello World!&quot; }
 </code></pre>
   </div>
 </div>"""
@@ -42,7 +42,6 @@ class ResponsesTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/05. Responses.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(text_response, html)
-        self.assertInIgnoreFormatting(json_response, html)
+        self.assertContains(response, text_response, html=True)
+        self.assertContains(response, json_response, html=True)

@@ -1,8 +1,9 @@
 from .base import ApibpTest
 
 
+url =  "<code>/message</code>"
+
 example = """
-  <code>/message</code>
   <div class="api-action-example">
     Example:
     <a href="https://foo.bar/baz/message">
@@ -18,6 +19,5 @@ class HostnameTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/host.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
-
-        self.assertInIgnoreFormatting(example, html)
+        self.assertContains(response, url, html=True)
+        self.assertContains(response, example, html=True)

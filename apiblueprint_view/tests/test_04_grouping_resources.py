@@ -3,14 +3,14 @@ from .base import ApibpTest
 
 messages_group_title = """
 <h2 id="messages-2">
-  Messages
-  <a class="permalink" href="#messages-2">¶</a>
+  Messages&nbsp;
+  <a class="permalink" href="#messages-2">&para;</a>
 </h2>"""
 
 users_group_title = """
 <h2 id="users-2">
-  Users
-  <a class="permalink" href="#users-2">¶</a>
+  Users&nbsp;
+  <a class="permalink" href="#users-2">&para;</a>
 </h2>"""
 
 users_group_description = """
@@ -31,8 +31,7 @@ class GroupingResourcesTest(ApibpTest):
         response = self.get_response(
             'apiblueprint_view/tests/fixtures/04. Grouping Resources.md')
         self.assertEqual(response.status_code, 200)
-        html = self.get_html(response)
 
-        self.assertInIgnoreFormatting(messages_group_title, html)
-        self.assertInIgnoreFormatting(users_group_title, html)
-        self.assertInIgnoreFormatting(users_group_description, html)
+        self.assertContains(response, messages_group_title, html=True)
+        self.assertContains(response, users_group_title, html=True)
+        self.assertContains(response, users_group_description, html=True)
