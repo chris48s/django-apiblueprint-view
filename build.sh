@@ -2,5 +2,6 @@
 
 set -e
 
-pandoc --from=markdown --to=rst --output=README.rst README.md
+pip install "setuptools>=38.6.0"
+pip install "twine>=1.11.0"
 python setup.py sdist
