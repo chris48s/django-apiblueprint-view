@@ -137,6 +137,6 @@ pip install --upgrade dist/django-apiblueprint-view-x.y.z.tar.gz
 Run the tests locally:
 
 ```
-pip install -r testing_requirements.txt
+pip install -e .[testing]
 ./run_tests.py
 ```
