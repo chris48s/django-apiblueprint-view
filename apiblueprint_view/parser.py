@@ -69,8 +69,8 @@ class ApibpParser:
                 raise SuspiciousFileOperation("extension not in whitelist")
 
             # recursively replace any includes in child files
-            include_apibp = self._replace_includes(
-                open(include_path, 'r').read())
+            with open(include_path, 'r') as f:
+                include_apibp = self._replace_includes(f.read())
 
             apibp = apibp.replace(
                 '<!-- include(' + match + ') -->', include_apibp)
@@ -98,7 +98,8 @@ class ApibpParser:
                     pass
 
     def parse(self):
-        apibp = open(self.blueprint, 'r').read()
+        with open(self.blueprint, 'r') as f:
+            apibp = f.read()
         if self.process_includes:
             apibp = self._replace_includes(apibp)
         self.api = parse(apibp)
