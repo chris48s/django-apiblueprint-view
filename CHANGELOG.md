@@ -1,8 +1,15 @@
 # Changelog
 
+## :package: [2.0.0](https://pypi.org/project/django-apiblueprint-view/2.0.0/) - 2018-11-04
+
+* Add support for python 3.7, django 2.1
+* Require python >=3.5, django >=1.11
+* Drop dependency on `typing`
+* Fix `ResourceWarnings`
+
 ## :package: [1.1.2](https://pypi.org/project/django-apiblueprint-view/1.1.2/) - 2017-12-03
 
-Add support for python 3.6, django 2.0 
+Add support for python 3.6, django 2.0
 
 ## :package: [1.1.1](https://pypi.org/project/django-apiblueprint-view/1.1.1/) - 2017-10-26
 
