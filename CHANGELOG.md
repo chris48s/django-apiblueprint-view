@@ -1,5 +1,9 @@
 # Changelog
 
+## :package: [2.0.1](https://pypi.org/project/django-apiblueprint-view/2.0.1/) - 2019-05-13
+
+Strip redundant whitespace in output
+
 ## :package: [2.0.0](https://pypi.org/project/django-apiblueprint-view/2.0.0/) - 2018-11-04
 
 * Add support for python 3.7, django 2.1
