@@ -1,5 +1,12 @@
 # Changelog
 
+## :package: [2.1.0](https://pypi.org/project/django-apiblueprint-view/2.1.0/) - 2019-05-31
+
+* Fixes to whitespace in rendered output
+* Pin `draughtsman` to 0.1.0
+* Add support for django 2.2
+* Drop support for django 2.0
+
 ## :package: [2.0.1](https://pypi.org/project/django-apiblueprint-view/2.0.1/) - 2019-05-13
 
 Strip redundant whitespace in output
