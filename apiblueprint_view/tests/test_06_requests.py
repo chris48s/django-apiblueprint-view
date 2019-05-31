@@ -23,6 +23,7 @@ update_request = """
   </h5>
   Request
   <span class="api-method api-method-PUT">PUT</span>
+  &#32;
   <code>/message</code>
   <div class="api-action-headers">
     Headers:

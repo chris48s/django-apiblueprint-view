@@ -15,7 +15,7 @@ params_description = """
   <ul>
     <li>
       <p>
-        <strong>id</strong>
+        <strong>id</strong>&#32;
         <code>number</code>
         (
           required

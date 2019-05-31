@@ -26,6 +26,7 @@ retrieve_resp = """
   <div class="api-action-request">
     Request
     <span class="api-method api-method-GET">GET</span>
+    &#32;
     <code>/message</code>
   </div>
   <div class="api-action-response">

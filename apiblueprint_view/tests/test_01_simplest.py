@@ -5,6 +5,7 @@ action_request = """
 <div class="api-action-request">
   Request
   <span class="api-method api-method-GET">GET</span>
+  &#32;
   <code>/message</code>
 </div>"""
 

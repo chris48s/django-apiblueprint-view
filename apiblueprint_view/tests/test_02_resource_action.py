@@ -6,6 +6,7 @@ put_response = """
   <div class="api-action-request">
     Request
     <span class="api-method api-method-PUT">PUT</span>
+    &#32;
     <code>/message</code>
     <div class="api-action-headers">
       Headers:
