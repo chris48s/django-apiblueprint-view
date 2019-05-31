@@ -24,7 +24,7 @@ setup(
     long_description_content_type="text/markdown",
     url='https://github.com/chris48s/django-apiblueprint-view',
     install_requires=[
-        'Django>=1.11,<2.2',
+        'Django>=1.11,<2.3',
         'draughtsman==0.1.0',
         'markdown2',
     ],
@@ -36,8 +36,8 @@ setup(
     classifiers=[
         'Framework :: Django',
         'Framework :: Django :: 1.11',
-        'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
