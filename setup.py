@@ -25,7 +25,7 @@ setup(
     url='https://github.com/chris48s/django-apiblueprint-view',
     install_requires=[
         'Django>=1.11,<2.2',
-        'draughtsman',
+        'draughtsman==0.1.0',
         'markdown2',
     ],
     extras_require={
