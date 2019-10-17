@@ -36,6 +36,9 @@ install:
   - poetry install
   - pip install --upgrade pip
   - "pip install Django$DJANGO_VERSION"
+  - isort **/*.py -c --diff
+  - flake8 .
+  - if [[ $TRAVIS_PYTHON_VERSION == *3.[6-9]* ]]; then black --check .; fi
 script:
   - coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
 after_success:

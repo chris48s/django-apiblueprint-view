@@ -26,10 +26,10 @@ here and as such we will omit it from the next installment of this course.
 
 
 class GroupingResourcesTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/04. Grouping Resources.md')
+            "apiblueprint_view/tests/fixtures/04. Grouping Resources.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, messages_group_title, html=True)

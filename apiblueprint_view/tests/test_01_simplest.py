@@ -27,10 +27,10 @@ action_response = """
 
 
 class SimplestTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/01. Simplest API.md')
+            "apiblueprint_view/tests/fixtures/01. Simplest API.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, action_request, html=True)

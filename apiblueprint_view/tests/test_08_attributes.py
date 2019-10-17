@@ -6,14 +6,20 @@ body_json = """{
     "created": 1415203908,
     "percent_off": 25,
     "redeem_by": null
-}""".replace('"', '&quot;')
+}""".replace(
+    '"', "&quot;"
+)
 
-coupon_body = """
+coupon_body = (
+    """
 <div class="api-action-body">
   Body:
-  <pre><code>""" + body_json + """
+  <pre><code>"""
+    + body_json
+    + """
 </code></pre>
 </div>"""
+)
 
 
 schema_json = """{
@@ -39,20 +45,26 @@ schema_json = """{
   "required": [
     "id"
   ]
-}""".replace('"', '&quot;')
+}""".replace(
+    '"', "&quot;"
+)
 
-coupon_schema = """
+coupon_schema = (
+    """
 <div class="api-action-schema">
   Schema:
-  <pre><code>""" + schema_json + """</code></pre>
+  <pre><code>"""
+    + schema_json
+    + """</code></pre>
 </div>"""
+)
 
 
 class AttributesTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/08. Attributes.md')
+            "apiblueprint_view/tests/fixtures/08. Attributes.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, coupon_body, html=True)

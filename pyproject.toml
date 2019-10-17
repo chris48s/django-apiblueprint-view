@@ -24,6 +24,10 @@ draughtsman = "==0.1.0"
 markdown2 = "2.*"
 
 [tool.poetry.dev-dependencies]
+isort = "^4.3"
+flake8 = "^3.7.8 "
+coverage = "^4.5.4"
+black = { version = "==19.3b0", allows-prereleases = true, python = "^3.6" }
 coveralls = "^1.8.2"
 
 [build-system]

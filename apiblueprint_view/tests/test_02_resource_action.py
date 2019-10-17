@@ -27,10 +27,10 @@ put_response = """
 
 
 class ResourceActionTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/02. Resource and Actions.md')
+            "apiblueprint_view/tests/fixtures/02. Resource and Actions.md"
+        )
         self.assertEqual(response.status_code, 200)
         html = self.get_html(response)
 

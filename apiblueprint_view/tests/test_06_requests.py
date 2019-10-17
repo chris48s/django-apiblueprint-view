@@ -39,10 +39,8 @@ update_request = """
 
 
 class RequestsTest(ApibpTest):
-
     def test(self):
-        response = self.get_response(
-            'apiblueprint_view/tests/fixtures/06. Requests.md')
+        response = self.get_response("apiblueprint_view/tests/fixtures/06. Requests.md")
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, text_header, html=True)

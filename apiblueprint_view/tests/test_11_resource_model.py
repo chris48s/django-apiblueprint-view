@@ -19,9 +19,12 @@ retrieve_json = """{
   "links": [
     { "rel": "self" , "href": "/message" }
   ]
-}""".replace('"', '&quot;')
+}""".replace(
+    '"', "&quot;"
+)
 
-retrieve_resp = """
+retrieve_resp = (
+    """
 <div class="api-action-transaction">
   <div class="api-action-request">
     Request
@@ -47,18 +50,21 @@ Location: http://api.acme.com/message
     </div>
     <div class="api-action-body">
        Body:
-       <pre><code>""" + retrieve_json + """
+       <pre><code>"""
+    + retrieve_json
+    + """
 </code></pre>
     </div>
   </div>
 </div>"""
+)
 
 
 class ResourceModelTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/11. Resource Model.md')
+            "apiblueprint_view/tests/fixtures/11. Resource Model.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, retrieve_desc, html=True)

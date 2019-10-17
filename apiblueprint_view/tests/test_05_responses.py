@@ -37,10 +37,10 @@ X-My-Message-Header: 42
 
 
 class ResponsesTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/05. Responses.md')
+            "apiblueprint_view/tests/fixtures/05. Responses.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, text_response, html=True)

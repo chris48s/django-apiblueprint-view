@@ -6,6 +6,7 @@
 ![License](https://img.shields.io/pypi/l/django-apiblueprint-view.svg)
 ![Python Support](https://img.shields.io/pypi/pyversions/django-apiblueprint-view.svg)
 ![Django Support](https://img.shields.io/pypi/djversions/django-apiblueprint-view.svg)
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 Render [API Blueprints](https://apiblueprint.org/) on-the-fly using Django templates
 

@@ -21,10 +21,10 @@ put_action = """
 
 
 class NamedResourceTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/03. Named Resource and Actions.md')
+            "apiblueprint_view/tests/fixtures/03. Named Resource and Actions.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, group_name, html=True)

@@ -33,10 +33,10 @@ params_description = """
 
 
 class ParametersTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/07. Parameters.md')
+            "apiblueprint_view/tests/fixtures/07. Parameters.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, example_url, html=True)

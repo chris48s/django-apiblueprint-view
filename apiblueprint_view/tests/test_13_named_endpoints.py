@@ -21,10 +21,10 @@ h4 = """
 
 
 class NamedEndpointsTest(ApibpTest):
-
     def test(self):
         response = self.get_response(
-            'apiblueprint_view/tests/fixtures/13. Named Endpoints.md')
+            "apiblueprint_view/tests/fixtures/13. Named Endpoints.md"
+        )
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, h2, html=True)
