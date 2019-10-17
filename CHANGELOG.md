@@ -1,5 +1,10 @@
 # Changelog
 
+## :package: [2.1.1](https://pypi.org/project/django-apiblueprint-view/2.1.1/) - 2019-10-17
+
+* Tested on python 3.8
+* Adopt poetry for packaging
+
 ## :package: [2.1.0](https://pypi.org/project/django-apiblueprint-view/2.1.0/) - 2019-05-31
 
 * Fixes to whitespace in rendered output

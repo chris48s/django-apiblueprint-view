@@ -125,19 +125,3 @@ You can include other files in your blueprint by using an include directive with
 This syntax is not a part of the API Blueprint spec, but is also supported in some other tools e.g: [aglio](https://github.com/danielgtaylor/aglio#including-files).
 
 The include directive has the potential to introduce remote file inclusion or directory traversal vulnerabilities if your application renders user-supplied content. There are a couple of settings to help mitigate this. Set `APIBP_PROCESS_INCLUDES = False` in your django settings to completely ignore include directives (the default is `True`). There is also a whitelist of allowed file types to include. The default whitelist is `['.md', '.apibp', '.json']` but this can be overridden by setting `APIBP_INCLUDE_WHITELIST` to a list of allowed extensions in your django settings.
-
-## Development
-
-Build and install locally:
-
-```
-python setup.py sdist
-pip install --upgrade dist/django-apiblueprint-view-x.y.z.tar.gz
-```
-
-Run the tests locally:
-
-```
-pip install -e .[testing]
-./run_tests.py
-```
