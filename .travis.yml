@@ -5,6 +5,7 @@ python:
   - '3.5'
   - '3.6'
   - '3.7'
+  - '3.8'
 env:
   matrix:
     - DJANGO_VERSION='>=1.11,<1.12'
@@ -17,6 +18,8 @@ addons:
     packages:
       - gcc-5
       - g++-5
+before_install:
+  - pip install poetry
 install:
   - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
   - wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
@@ -30,8 +33,8 @@ install:
   - cd ..
   - rm -rf drafter-v3.2.7/
   - rm drafter-v3.2.7.tar.gz
+  - poetry install
   - pip install --upgrade pip
-  - pip install -e .[testing]
   - "pip install Django$DJANGO_VERSION"
 script:
   - coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py

@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "django-apiblueprint-view"
+version = "2.1.1"
+description = "Render API Blueprints on-the-fly using Django templates"
+authors = ["chris48s"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/chris48s/django-apiblueprint-view"
+homepage = "https://github.com/chris48s/django-apiblueprint-view"
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 1.11",
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 2.2",
+]
+include = ["apiblueprint_view/templates/**"]
+exclude = ["apiblueprint_view/tests/**"]
+packages = [ {include = "apiblueprint_view"} ]
+
+[tool.poetry.dependencies]
+python = "^3.5"
+Django = ">=1.11,<2.3"
+draughtsman = "==0.1.0"
+markdown2 = "2.*"
+
+[tool.poetry.dev-dependencies]
+coveralls = "^1.8.2"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

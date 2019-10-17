@@ -1,2 +1,0 @@
-recursive-include apiblueprint_view/templates *
-prune apiblueprint_view/tests/
