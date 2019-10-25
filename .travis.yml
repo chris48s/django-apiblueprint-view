@@ -41,5 +41,6 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == *3.[6-9]* ]]; then black --check .; fi
 script:
   - coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
+  - poetry build
 after_success:
   - coveralls
