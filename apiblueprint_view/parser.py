@@ -6,7 +6,8 @@ import markdown2
 from django.conf import settings
 from django.core.exceptions import SuspiciousFileOperation
 from django.utils._os import safe_join
-from draughtsman import parse
+
+from . import dm
 
 
 class ApibpParser:
@@ -101,7 +102,7 @@ class ApibpParser:
             apibp = f.read()
         if self.process_includes:
             apibp = self._replace_includes(apibp)
-        self.api = parse(apibp)
+        self.api = dm.parse(apibp)
         self._set_host()
         self._post_process(self.api[0])
 

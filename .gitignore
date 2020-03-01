@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+apiblueprint_view/lib/*
 build/
 .coverage
 dist/
