@@ -1,0 +1,5 @@
+name: 'build-wheels'
+description: 'Build manylinux wheels'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
