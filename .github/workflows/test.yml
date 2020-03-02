@@ -1,0 +1,35 @@
+name: Run tests
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.5, 3.6, 3.7, 3.8]
+        django-version: ['>=1.11,<1.12', '>=2.1,<2.2', '>=2.2,<2.3']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install poetry
+          ./build-drafter.sh
+          poetry install
+          pip install 'Django ${{ matrix.django-version }}'
+      - name: Run lint checks
+        run: |
+          poetry run isort **/*.py -c --diff
+          poetry run flake8 .
+          if [[ ${{ matrix.python-version }} != 3.5 ]]; then poetry run black --check .; fi
+      - name: Run tests
+        run: |
+          poetry run coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
+          if [[ ${{ matrix.python-version }} != 3.5 ]]; then poetry build; fi
+      - name: Upload coverage
+        run: COVERALLS_REPO_TOKEN=${{ secrets.COVERALLS_REPO_TOKEN }} poetry run coveralls
