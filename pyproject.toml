@@ -12,6 +12,7 @@ classifiers = [
     "Framework :: Django :: 1.11",
     "Framework :: Django :: 2.1",
     "Framework :: Django :: 2.2",
+    "Framework :: Django :: 3.0",
 ]
 include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
 exclude = ["apiblueprint_view/tests/**"]
@@ -19,7 +20,7 @@ packages = [ {include = "apiblueprint_view"} ]
 
 [tool.poetry.dependencies]
 python = "^3.5"
-Django = ">=1.11,<2.3"
+Django = ">=1.11,<4.0"
 draughtsman = "==0.1.0"
 markdown2 = "2.*"
 cffi = "^1.14.0"
