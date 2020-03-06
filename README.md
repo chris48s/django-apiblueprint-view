@@ -12,21 +12,9 @@ Render [API Blueprints](https://apiblueprint.org/) on-the-fly using Django templ
 
 ## Installation
 
-1. `django-apiblueprint-view` uses the [Drafter](https://github.com/apiaryio/drafter) C library for API Blueprint parsing. Install it using:
+1. `pip install django-apiblueprint-view`
 
-```
-wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
-tar xvzf drafter-v3.2.7.tar.gz
-cd drafter-v3.2.7
-./configure --shared
-make libdrafter
-sudo cp build/out/Release/lib.target/libdrafter.so /usr/lib/libdrafter.so
-sudo cp src/drafter.h /usr/include/drafter/drafter.h
-```
-
-2. `pip install django-apiblueprint-view`
-
-3. Add to `INSTALLED_APPS` in django settings:
+2. Add to `INSTALLED_APPS` in django settings:
 
 ```python
 INSTALLED_APPS = [
