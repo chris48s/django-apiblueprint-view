@@ -1,6 +1,6 @@
 # Changelog
 
-## :package: [2.2.0](https://pypi.org/project/django-apiblueprint-view/2.2.0/) - 2020-03-06
+## :package: [2.2.1](https://pypi.org/project/django-apiblueprint-view/2.2.1/) - 2020-03-06
 
 * Distribute libdrafter with package using manylinux wheel
 * Tested on Django 3.0
