@@ -28,7 +28,7 @@ refract = "==0.3.0"
 [tool.poetry.dev-dependencies]
 isort = "^4.3"
 flake8 = "^3.7.8 "
-black = { version = "==19.3b0", allow-prereleases = true, python = "^3.6" }
+black = { version = "==19.10b0", allow-prereleases = true, python = "^3.6" }
 coveralls = "^1.10.0"
 
 [build-system]
