@@ -23,7 +23,7 @@ python = "^3.5"
 Django = ">=1.11,<4.0"
 markdown2 = "2.*"
 cffi = "^1.0.0"
-refract = "==0.3.0"
+refract = "==0.4.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^4.3"
