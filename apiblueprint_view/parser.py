@@ -7,7 +7,7 @@ from django.conf import settings
 from django.core.exceptions import SuspiciousFileOperation
 from django.utils._os import safe_join
 
-from . import dm
+from apiblueprint_view.draughtsman import Draughtsman
 
 
 class ApibpParser:
@@ -17,8 +17,11 @@ class ApibpParser:
     the parsed data structure to make it easier to render
     """
 
-    def __init__(self, blueprint):
+    def __init__(self, blueprint, drafter_path):
         self.blueprint = os.path.abspath(blueprint)
+        self.drafter_path = drafter_path
+        if self.drafter_path:
+            self.drafter_path = os.path.abspath(self.drafter_path)
         self.api = None
         self.host = None
         self.process_includes = getattr(settings, "APIBP_PROCESS_INCLUDES", True)
@@ -98,6 +101,7 @@ class ApibpParser:
                     pass
 
     def parse(self):
+        dm = Draughtsman(self.drafter_path)
         with open(self.blueprint, "r") as f:
             apibp = f.read()
         if self.process_includes:

@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 
-from .parser import ApibpParser
+from apiblueprint_view import _DRAFTER_PATH
+from apiblueprint_view.parser import ApibpParser
 
 BASE_STYLES = {
     "action": {"class": "api-action"},
@@ -33,6 +34,7 @@ class ApiBlueprintView(TemplateView):
     blueprint = None
     template_name = "api_docs/default_base.html"
     styles = None
+    drafter_path = _DRAFTER_PATH
 
     def make_styles(self):
         styles = BASE_STYLES
@@ -48,7 +50,7 @@ class ApiBlueprintView(TemplateView):
         return styles
 
     def get_context_data(self, **context):
-        parser = ApibpParser(self.blueprint)
+        parser = ApibpParser(self.blueprint, self.drafter_path)
         api = parser.parse()
 
         context["root"] = api.content[0]

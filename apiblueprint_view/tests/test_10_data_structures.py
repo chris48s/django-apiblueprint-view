@@ -1,4 +1,7 @@
 from .base import ApibpTest
+from apiblueprint_view import _DRAFTER_PATH
+from apiblueprint_view.draughtsman import Draughtsman
+
 
 
 body_json = """{
@@ -23,7 +26,7 @@ coupon_body = (
 
 
 schema_json = """{
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-%s/schema#",
   "type": "object",
   "properties": {
     "percent_off": {
@@ -60,6 +63,15 @@ coupon_schema = (
 )
 
 
+def get_coupon_schema():
+    dm = Draughtsman(_DRAFTER_PATH)
+    drafter_version = dm.get_drafter_version()
+    if drafter_version.major == 5:
+        return coupon_schema % "07"
+    else:
+        return coupon_schema % "04"
+
+
 class DataStructuresTest(ApibpTest):
     def test(self):
         response = self.get_response(
@@ -68,4 +80,4 @@ class DataStructuresTest(ApibpTest):
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, coupon_body, html=True)
-        self.assertContains(response, coupon_schema, html=True)
+        self.assertContains(response, get_coupon_schema(), html=True)

@@ -1,4 +1,6 @@
 from .base import ApibpTest
+from apiblueprint_view import _DRAFTER_PATH
+from apiblueprint_view.draughtsman import Draughtsman
 
 
 body_json = """[
@@ -24,7 +26,7 @@ coupons_body = (
 
 
 schema_json = """{
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-%s/schema#",
   "type": "array"
 }""".replace(
     '"', "&quot;"
@@ -41,6 +43,15 @@ coupons_schema = (
 )
 
 
+def get_coupons_schema():
+    dm = Draughtsman(_DRAFTER_PATH)
+    drafter_version = dm.get_drafter_version()
+    if drafter_version.major == 5:
+        return coupons_schema % "07"
+    else:
+        return coupons_schema % "04"
+
+
 class AdvancedAttributesTest(ApibpTest):
     def test(self):
         response = self.get_response(
@@ -49,4 +60,4 @@ class AdvancedAttributesTest(ApibpTest):
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response, coupons_body, html=True)
-        self.assertContains(response, coupons_schema, html=True)
+        self.assertContains(response, get_coupons_schema(), html=True)
