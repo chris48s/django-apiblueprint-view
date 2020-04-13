@@ -3,7 +3,6 @@ from apiblueprint_view import _DRAFTER_PATH
 from apiblueprint_view.draughtsman import Draughtsman
 
 
-
 body_json = """{
   "percent_off": 25,
   "redeem_by": 0,
@@ -30,19 +29,16 @@ schema_json = """{
   "type": "object",
   "properties": {
     "percent_off": {
-      "type": "number",
-      "description": "A positive integer between 1 and 100 that represents the discount the\\ncoupon will apply."
+      "type": "number"
     },
     "redeem_by": {
-      "type": "number",
-      "description": "Date after which the coupon can no longer be redeemed"
+      "type": "number"
     },
     "id": {
       "type": "string"
     },
     "created": {
-      "type": "number",
-      "description": "Time stamp"
+      "type": "number"
     }
   },
   "required": [
