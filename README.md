@@ -23,7 +23,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-## Usage
+## Basic Usage
 
 ```python
 from apiblueprint_view.views import ApiBlueprintView
@@ -31,6 +31,47 @@ from apiblueprint_view.views import ApiBlueprintView
 urlpatterns = [
     url(r'^docs/$', ApiBlueprintView.as_view(blueprint='/path/to/blueprint.apibp')),
 ]
+```
+
+`ApiBlueprintView` has 4 properties which may be passed as params to `.as_view()` as parameters, or defined as class properties:
+
+```py
+from apiblueprint_view.views import ApiBlueprintView
+
+class ApiDocsView(ApiBlueprintView):
+
+    blueprint = 'path/to/blueprint.apibp'  # blueprint to render
+    drafter_path = 'path/to/libdrafter.so'  # custom drafter library
+    template_name = 'base_template.html'  # template to render with
+    styles = {  # custom CSS clases
+        'resource': {'class': 'card'},
+        'resource_group': {'class': 'card'},
+    }
+
+urlpatterns = [
+    url(r'^docs/$', ApiDocsView.as_view()),
+]
+```
+
+## Drafter
+
+`django-apiblueprint-view` uses the [Drafter](https://github.com/apiaryio/drafter) C library for API Blueprint parsing. It is compatible with any Drafter >=4.0.0,<6.0.0. By default, a manylinux drafter 4.1.0 shared object is bundled with the package, but it is also possible to use an external drafter library by setting `drafter_path`. This is necessary if you want to use a different version of drafter or use this library on Windows/Mac.
+
+```py
+# Use the vendored shared object (drafter 4.1.0/manylinux).
+ApiBlueprintView.as_view(blueprint='/path/to/blueprint.apibp')
+
+# Use drafter at this specific path.
+ApiBlueprintView.as_view(
+    blueprint='/path/to/blueprint.apibp',
+    drafter_path='/path/to/libdrafter.dylib'
+)
+
+# Search for a global `libdrafter` using `ctypes.util.find_library()`.
+ApiBlueprintView.as_view(
+    blueprint='/path/to/blueprint.apibp',
+    drafter_path=None
+)
 ```
 
 ## Styling
@@ -43,7 +84,7 @@ Define a custom base template. It must include the tag
 {% include 'api_docs/docs_parent.html' %}
 ```
 
-Pass it into `ApiBlueprintView.as_view()` as a parameter.
+Set it using `template_name`.
 
 ```python
 from apiblueprint_view.views import ApiBlueprintView
@@ -58,7 +99,7 @@ urlpatterns = [
 
 ### Custom CSS
 
-`ApiBlueprintView.as_view()` may accept a `styles` dictionary describing custom CSS classes which should be attached to rendered HTML tags. For example:
+ApiBlueprintView may accept a `styles` dictionary describing custom CSS classes which should be attached to rendered HTML tags.
 
 ```python
 from apiblueprint_view.views import ApiBlueprintView
