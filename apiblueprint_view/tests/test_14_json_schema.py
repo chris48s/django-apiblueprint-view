@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 get_schema_json = """{
     "type": "object",
     "properties": {

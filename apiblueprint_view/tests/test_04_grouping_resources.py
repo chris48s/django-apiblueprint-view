@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 messages_group_title = """
 <h2 id="messages-2">
   Messages&nbsp;

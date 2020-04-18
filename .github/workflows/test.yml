@@ -24,7 +24,7 @@ jobs:
           pip install 'Django ${{ matrix.django-version }}'
       - name: Run lint checks
         run: |
-          poetry run isort **/*.py -c --diff
+          poetry run isort -rc -c --diff
           poetry run flake8 .
           if [[ ${{ matrix.python-version }} != 3.5 ]]; then poetry run black --check .; fi
       - name: Run tests

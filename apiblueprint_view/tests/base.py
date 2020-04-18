@@ -1,4 +1,5 @@
-from django.test import TestCase, RequestFactory
+from django.test import RequestFactory, TestCase
+
 from apiblueprint_view.views import ApiBlueprintView
 
 

@@ -1,7 +1,7 @@
-from .base import ApibpTest
 from apiblueprint_view import _DRAFTER_PATH
 from apiblueprint_view.draughtsman import Draughtsman
 
+from .base import ApibpTest
 
 body_json = """[
   {

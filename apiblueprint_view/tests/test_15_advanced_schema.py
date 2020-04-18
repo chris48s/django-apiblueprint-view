@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 custom_schema_attribute = (
     "&quot;description&quot;: &quot;This is a custom schema!&quot;,"
 )

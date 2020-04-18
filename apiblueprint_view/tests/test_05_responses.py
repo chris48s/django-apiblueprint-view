@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 text_response = """
 <div class="api-action-response">
   Response

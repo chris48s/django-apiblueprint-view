@@ -3,10 +3,10 @@ import os
 import re
 
 import markdown2
-from refract import Element
 from django.conf import settings
 from django.core.exceptions import SuspiciousFileOperation
 from django.utils._os import safe_join
+from refract import Element
 
 from apiblueprint_view.draughtsman import Draughtsman
 

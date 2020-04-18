@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 example_url = """
 <div class="api-action-example">
   Example:

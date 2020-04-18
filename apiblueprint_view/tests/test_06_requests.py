@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 text_header = """
 <div class="api-action-headers">
   Headers:
