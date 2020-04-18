@@ -6,11 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
         django-version: ['>=1.11,<1.12', '>=2.1,<2.2', '>=2.2,<2.3', '>=3.0,<3.1']
-        exclude:
-          - python-version: 3.5
-            django-version: '>=3.0,<3.1'
     steps:
       - name: Checkout
         uses: actions/checkout@v2

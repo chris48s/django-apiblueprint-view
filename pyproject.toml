@@ -19,7 +19,7 @@ exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 
 [tool.poetry.dependencies]
-python = "^3.5"
+python = "^3.6"
 Django = ">=1.11,<4.0"
 markdown2 = "2.*"
 cffi = "^1.0.0"
