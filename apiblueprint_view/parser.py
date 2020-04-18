@@ -3,6 +3,7 @@ import os
 import re
 
 import markdown2
+from refract import Element
 from django.conf import settings
 from django.core.exceptions import SuspiciousFileOperation
 from django.utils._os import safe_join
@@ -58,6 +59,16 @@ class ApibpParser:
             for transaction in transition.transactions:
                 transaction.request.attributes["href"] = element.attributes["href"]
 
+    def _parse_descriptions(self, element):
+        if "hrefVariables" not in element.attributes.attributes:
+            return
+        for param in element.attributes["hrefVariables"].content:
+            if hasattr(param, "description"):
+                try:
+                    self._parse_markdown(param.description)
+                except AttributeError:
+                    pass
+
     def _parse_markdown(self, element):
         element.content = markdown2.markdown(element.content)
 
@@ -81,24 +92,21 @@ class ApibpParser:
         return apibp
 
     def _post_process(self, root):
+        if isinstance(root, str):
+            return
         for element in root:
-            if hasattr(element, "element"):
-                if element.element == "copy":
-                    self._parse_markdown(element)
-                if element.element == "resource":
-                    self._make_example(element)
-                    self._propogate_hrefs(element)
-                    if "hrefVariables" in element.attributes.attributes:
-                        for param in element.attributes["hrefVariables"].content:
-                            if hasattr(param, "description"):
-                                try:
-                                    self._parse_markdown(param.description)
-                                except AttributeError:
-                                    pass
-                try:
-                    self._post_process(element.content)
-                except (TypeError, KeyError):
-                    pass
+            if not isinstance(element, Element):
+                continue
+            if element.element == "copy":
+                self._parse_markdown(element)
+            if element.element == "resource":
+                self._make_example(element)
+                self._propogate_hrefs(element)
+                self._parse_descriptions(element)
+            try:
+                self._post_process(element.content)
+            except (TypeError, KeyError):
+                pass
 
     def parse(self):
         dm = Draughtsman(self.drafter_path)
