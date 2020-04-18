@@ -38,7 +38,7 @@ class ApibpParser:
             element.attributes["hrefExample"].content = (
                 self.host + element.attributes["hrefExample"].content
             )
-        if "hrefVariables" in element.attributes:
+        if "hrefVariables" in element.attributes.attributes:
             replacements = {
                 var.key.content: var.value.content
                 for var in element.attributes["hrefVariables"].content
@@ -85,7 +85,7 @@ class ApibpParser:
                 if element.element == "resource":
                     self._make_example(element)
                     self._propogate_hrefs(element)
-                    if "hrefVariables" in element.attributes:
+                    if "hrefVariables" in element.attributes.attributes:
                         for param in element.attributes["hrefVariables"].content:
                             if hasattr(param, "description"):
                                 try:
