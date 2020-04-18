@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# upgrade cmake
+yum remove -y cmake
+/opt/python/cp36-cp36m/bin/pip install cmake
+ln -s /opt/python/cp36-cp36m/bin/cmake /usr/bin/cmake
+
 yum install -y wget
 /opt/python/cp36-cp36m/bin/pip install poetry
 ./build-drafter.sh
