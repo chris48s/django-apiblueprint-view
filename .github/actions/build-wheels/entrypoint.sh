@@ -12,9 +12,9 @@ yum install -y wget
 /opt/python/cp36-cp36m/bin/poetry install
 /opt/python/cp36-cp36m/bin/poetry build -f wheel
 
-for whl in ./dist/*.whl; do
-  auditwheel repair $whl --plat "linux_x86_64" -w ./dist
-done
+#for whl in ./dist/*.whl; do
+#  auditwheel repair $whl --plat "manylinux2014_x86_64" -w ./dist
+#done
 
 /opt/python/cp36-cp36m/bin/poetry config pypi-token.pypi "$1"
 /opt/python/cp36-cp36m/bin/poetry publish -vvv -n
