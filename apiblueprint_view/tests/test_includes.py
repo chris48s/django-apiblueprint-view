@@ -1,6 +1,6 @@
 from django.core.exceptions import SuspiciousFileOperation
-from .base import ApibpTest
 
+from .base import ApibpTest
 
 response_body = """
 <div class="api-action-body">

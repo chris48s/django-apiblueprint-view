@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 group_name = """
 <h3 id="my-message-3">
   My Message&nbsp;

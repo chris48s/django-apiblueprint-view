@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 put_response = """
 <div class="api-action-transaction">
   <div class="api-action-request">

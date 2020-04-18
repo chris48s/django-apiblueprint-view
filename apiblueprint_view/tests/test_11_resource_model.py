@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 retrieve_desc = """
 <div class="api-description">
   <p>

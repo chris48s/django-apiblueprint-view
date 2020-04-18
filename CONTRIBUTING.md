@@ -11,6 +11,6 @@ Development Tasks:
 
 * Install dependencies: `poetry install`
 * Run the test suite: `./run_tests.py`
-* Sort imports: `isort **/*.py`
+* Sort imports: `isort -rc .`
 * Run lint checks: `flake8 .`
 * Auto-format: `black .`

@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 url = "<code>/message</code>"
 
 example = """

@@ -29,8 +29,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 from cffi import FFI
+from refract.contrib.apielements import ParseResult, registry
 from refract.json import LegacyJSONDeserialiser
-from refract.contrib.apielements import registry, ParseResult
 
 _all_ = ("parse",)
 

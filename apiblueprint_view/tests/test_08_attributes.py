@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 body_json = """{
     "id": "250FF",
     "created": 1415203908,

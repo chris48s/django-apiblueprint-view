@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 body_json = """{
   "percent_off": 25,
   "redeem_by": 0,

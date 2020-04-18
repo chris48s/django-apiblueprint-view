@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 action_request = """
 <div class="api-action-request">
   Request

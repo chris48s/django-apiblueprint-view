@@ -1,6 +1,8 @@
 import unittest
-from apiblueprint_view import dm
+
 from refract.contrib.apielements import ParseResult
+
+from apiblueprint_view import dm
 
 
 class DraughtsmanTests(unittest.TestCase):

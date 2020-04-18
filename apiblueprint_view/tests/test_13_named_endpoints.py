@@ -1,6 +1,5 @@
 from .base import ApibpTest
 
-
 h2 = """
 <h2 id="quick-start-2">
   Quick start&nbsp;
