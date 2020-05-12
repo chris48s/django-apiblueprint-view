@@ -1,8 +1,10 @@
 # Changelog
 
-## 📦 [next]
+## 📦 [2.3.0](https://pypi.org/project/django-apiblueprint-view/2.3.0/) - 2020-05-12
 
 * Drop python 3.5 compatibility
+* Require `markdown2 >= 2.3.9` to resolve XSS vulnerability.
+  See https://github.com/advisories/GHSA-fv3h-8x5j-pvgq for more info.
 
 ## 📦 [2.2.1](https://pypi.org/project/django-apiblueprint-view/2.2.1/) - 2020-03-06
 

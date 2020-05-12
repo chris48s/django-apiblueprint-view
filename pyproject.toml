@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-apiblueprint-view"
-version = "2.2.1"
+version = "2.3.0"
 description = "Render API Blueprints on-the-fly using Django templates"
 authors = ["chris48s"]
 license = "MIT"
@@ -21,7 +21,7 @@ packages = [ {include = "apiblueprint_view"} ]
 [tool.poetry.dependencies]
 python = "^3.6"
 Django = ">=1.11,<4.0"
-markdown2 = "2.*"
+markdown2 = ">=2.3.9"
 cffi = "^1.0.0"
 refract = "==0.4.0"
 
