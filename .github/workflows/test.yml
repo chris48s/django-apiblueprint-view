@@ -26,10 +26,10 @@ jobs:
         run: |
           poetry run isort -rc -c --diff
           poetry run flake8 .
-          if [[ ${{ matrix.python-version }} != 3.5 ]]; then poetry run black --check .; fi
+          poetry run black --check .
       - name: Run tests
         run: |
           poetry run coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
-          if [[ ${{ matrix.python-version }} != 3.5 ]]; then poetry build; fi
+          poetry build
       - name: Upload coverage
         run: COVERALLS_REPO_TOKEN=${{ secrets.COVERALLS_REPO_TOKEN }} poetry run coveralls
