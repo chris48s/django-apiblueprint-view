@@ -185,7 +185,7 @@ description = "A Python utility / library to sort Python imports."
 name = "isort"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "5.0.7"
+version = "5.0.9"
 
 [package.extras]
 pipfile_deprecated_finder = ["pipreqs", "requirementslib", "tomlkit (>=0.5.3)"]
@@ -451,8 +451,8 @@ importlib-metadata = [
     {file = "importlib_metadata-1.6.0.tar.gz", hash = "sha256:34513a8a0c4962bc66d35b359558fd8a5e10cd472d37aec5f66858addef32c1e"},
 ]
 isort = [
-    {file = "isort-5.0.7-py3-none-any.whl", hash = "sha256:46bd31573158ac69e598a2ab14b207e6a43a2b2872009d2ad0f62f179876037a"},
-    {file = "isort-5.0.7.tar.gz", hash = "sha256:6bc0b408d7c62e331d355085914dd28fd352635f6babd5e4605702ff3b6d9c09"},
+    {file = "isort-5.0.9-py3-none-any.whl", hash = "sha256:3d8e0d7678b66af1e3a6936f2a380a5d4f3faf4b1b38c6aaa4bed6695c6bdcde"},
+    {file = "isort-5.0.9.tar.gz", hash = "sha256:639b8084644ceb13a806f42d690273b9d844793ac2f515fbc575ba65dc044de0"},
 ]
 markdown2 = [
     {file = "markdown2-2.3.9-py2.py3-none-any.whl", hash = "sha256:e6b401ec80b75e76a6b3dbb2c8ade513156fa55fa6c30b9640a1abf6184a07c8"},
