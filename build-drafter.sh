@@ -1,5 +1,6 @@
 #!/bin/bash
-set -e -x
+
+set -euxo pipefail
 
 wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
 tar xvzf drafter-v3.2.7.tar.gz

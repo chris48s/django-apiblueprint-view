@@ -1,5 +1,6 @@
 #!/bin/sh
-set -e
+
+set -euo pipefail
 
 yum install -y wget
 /opt/python/cp36-cp36m/bin/pip install poetry
