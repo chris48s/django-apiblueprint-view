@@ -1,6 +1,6 @@
 # django-apiblueprint-view
 
-[![Build Status](https://travis-ci.org/chris48s/django-apiblueprint-view.svg?branch=master)](https://travis-ci.org/chris48s/django-apiblueprint-view)
+![Build status](https://github.com/chris48s/django-apiblueprint-view/workflows/Run%20tests/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/chris48s/django-apiblueprint-view/badge.svg?branch=master)](https://coveralls.io/github/chris48s/django-apiblueprint-view?branch=master)
 ![PyPI Version](https://img.shields.io/pypi/v/django-apiblueprint-view.svg)
 ![License](https://img.shields.io/pypi/l/django-apiblueprint-view.svg)
