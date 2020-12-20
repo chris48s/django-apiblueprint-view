@@ -21,20 +21,15 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install poetry
-          ./build-drafter.sh
+          make build-drafter
           poetry install
-          pip install 'Django ${{ matrix.django-version }}'
+          make install
 
       - name: Check coding standards
-        run: |
-          poetry run isort --profile black -c --diff .
-          poetry run flake8 .
-          poetry run black --check .
+        run: make lint
 
       - name: Run tests
-        run: |
-          poetry run coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
-          poetry run coverage xml
+        run: make test
 
       - name: Ensure package builds
         run: poetry build

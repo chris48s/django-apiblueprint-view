@@ -9,8 +9,7 @@ This project uses:
 
 Development Tasks:
 
-* Install dependencies: `poetry install`
-* Run the test suite: `./run_tests.py`
-* Sort imports: `isort --profile black .`
-* Run lint checks: `flake8 .`
-* Auto-format: `black .`
+* Install dependencies: `make install`
+* Run the test suite: `make test`
+* Run lint checks: `make lint`
+* Auto-format: `make format`
