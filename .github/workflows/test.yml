@@ -6,15 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8, 3.9]
         django-version: ['>=1.11,<1.12', '>=2.1,<2.2', '>=2.2,<2.3', '>=3.0,<3.1']
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -22,14 +24,22 @@ jobs:
           ./build-drafter.sh
           poetry install
           pip install 'Django ${{ matrix.django-version }}'
-      - name: Run lint checks
+
+      - name: Check coding standards
         run: |
           poetry run isort --profile black -c --diff .
           poetry run flake8 .
           poetry run black --check .
+
       - name: Run tests
         run: |
           poetry run coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
-          poetry build
-      - name: Upload coverage
-        run: COVERALLS_REPO_TOKEN=${{ secrets.COVERALLS_REPO_TOKEN }} poetry run coveralls
+          poetry run coverage xml
+
+      - name: Ensure package builds
+        run: poetry build
+
+      - name: Upload coverage report to codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml

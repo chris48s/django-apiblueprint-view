@@ -3,6 +3,7 @@ __pycache__/
 apiblueprint_view/lib/*
 build/
 .coverage
+coverage.xml
 dist/
 django_apiblueprint_view.egg-info/
 .eggs/
