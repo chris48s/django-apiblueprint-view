@@ -1,5 +1,9 @@
 # Changelog
 
+## 📦 [2.3.1](https://pypi.org/project/django-apiblueprint-view/2.3.1/) - 2021-04-11
+
+Update django versions compatibility
+
 ## 📦 [2.3.0](https://pypi.org/project/django-apiblueprint-view/2.3.0/) - 2020-05-12
 
 * Drop python 3.5 compatibility
