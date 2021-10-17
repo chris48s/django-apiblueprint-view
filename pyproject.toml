@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-apiblueprint-view"
-version = "2.3.1"
+version = "2.3.2"
 description = "Render API Blueprints on-the-fly using Django templates"
 authors = ["chris48s"]
 license = "MIT"
