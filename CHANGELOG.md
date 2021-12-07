@@ -1,5 +1,10 @@
 # Changelog
 
+## 📦 [2.4.0](https://pypi.org/project/django-apiblueprint-view/2.4.0/) - 2021-12-07
+
+* Tested on django 4.0
+* Dropped compatibility with python 3.6 and django 1.11
+
 ## 📦 [2.3.2](https://pypi.org/project/django-apiblueprint-view/2.3.2/) - 2021-10-17
 
 * Tested on python 3.10
