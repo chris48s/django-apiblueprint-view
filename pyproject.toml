@@ -9,25 +9,25 @@ repository = "https://github.com/chris48s/django-apiblueprint-view"
 homepage = "https://github.com/chris48s/django-apiblueprint-view"
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 1.11",
     "Framework :: Django :: 2.2",
     "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
 ]
 include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-Django = ">=1.11,<4.0"
+python = "^3.7"
+Django = ">=2.2,<5.0"
 markdown2 = ">=2.3.9"
 cffi = "^1.0.0"
 refract = "==0.4.0"
 
 [tool.poetry.dev-dependencies]
-isort = { version = "^5.10", python = "^3.6.2" }
+isort = "^5.10"
 flake8 = "^4.0.1"
-black = { version = "==21.12b0", allow-prereleases = true, python = "^3.6.2" }
+black = { version = "==21.12b0", allow-prereleases = true }
 coverage = "^6.2"
 
 [build-system]
