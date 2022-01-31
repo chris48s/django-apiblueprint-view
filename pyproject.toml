@@ -27,7 +27,7 @@ refract = "==0.4.0"
 [tool.poetry.dev-dependencies]
 isort = "^5.10"
 flake8 = "^4.0.1"
-black = { version = "==21.12b0", allow-prereleases = true }
+black = { version = "==22.1.0", allow-prereleases = true }
 coverage = "^6.3"
 
 [build-system]
