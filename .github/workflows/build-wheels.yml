@@ -7,7 +7,7 @@ jobs:
     if: github.event.ref_type == 'tag'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Build Wheels and Publish to PyPI
         uses: ./.github/actions/build-wheels
         with:
