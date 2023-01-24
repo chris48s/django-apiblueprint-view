@@ -303,14 +303,14 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "markdown2"
-version = "2.4.6"
+version = "2.4.7"
 description = "A fast and complete Python implementation of Markdown"
 category = "main"
 optional = false
 python-versions = ">=3.5, <4"
 files = [
-    {file = "markdown2-2.4.6-py2.py3-none-any.whl", hash = "sha256:528f978beb3dbcf529a139b6c76f6ac6ecf8bb96c131beab751bb095b3873b58"},
-    {file = "markdown2-2.4.6.tar.gz", hash = "sha256:f65b4dbe1e16591b14fd40bc659b8b58d285eab70c1da21f390294fcdec42bb0"},
+    {file = "markdown2-2.4.7-py2.py3-none-any.whl", hash = "sha256:62156ad2426249a1d1a9059cfe7eab712ff2f397660991b1796c342c19bfa922"},
+    {file = "markdown2-2.4.7.tar.gz", hash = "sha256:dfb52ff4007389567b391ce8fa3cff3dd363d1f282d20205383c6a710f9870d1"},
 ]
 
 [package.extras]
