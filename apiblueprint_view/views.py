@@ -29,7 +29,6 @@ BASE_STYLES = {
 
 
 class ApiBlueprintView(TemplateView):
-
     blueprint = None
     template_name = "api_docs/default_base.html"
     styles = None
