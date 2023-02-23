@@ -28,7 +28,7 @@ refract = "==0.4.0"
 isort = "^5.11"
 flake8 = "^5.0.4"
 black = "==23.1.0"
-coverage = "^7.1"
+coverage = "^7.2"
 
 [build-system]
 requires = ["poetry>=1.0.2"]
