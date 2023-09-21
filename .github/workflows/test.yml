@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Set up Python 2.7
+        run: ./.github/scripts/setup-python2.7.sh
+
       - name: Install dependencies
         run: |
           pip install --upgrade pip
@@ -33,9 +36,6 @@ jobs:
 
       - name: Run tests
         run: make test
-
-      - name: Ensure package builds
-        run: poetry build
 
       - name: Upload coverage report to codecov
         uses: codecov/codecov-action@v3

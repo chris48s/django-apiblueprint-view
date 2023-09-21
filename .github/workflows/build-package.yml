@@ -1,0 +1,43 @@
+name: Build Package
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.16.0
+        env:
+          CIBW_BEFORE_BUILD: yum install -y wget && ./build-drafter.sh
+          CIBW_BUILD: "cp*-manylinux_x86_64"
+          CIBW_SKIP: "cp36-* cp312-*"
+        with:
+          package-dir: .
+          output-dir: dist
+          config-file: "pyproject.toml"
+
+      # build sdist
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: Set up Python 2.7
+        run: ./.github/scripts/setup-python2.7.sh
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install poetry
+          make install
+      - name: Build sdist
+        run: poetry build --format sdist
+
+      - run: ls dist
+      # TODO: if we pushed a tag
+      # poetry config pypi-token.pypi
+      # poetry publish -vvv -n
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./dist/*
