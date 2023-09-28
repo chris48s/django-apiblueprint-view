@@ -13,7 +13,11 @@ classifiers = [
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
 ]
-include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
+include = [
+    "apiblueprint_view/templates/**",
+    "apiblueprint_view/lib/libdrafter.so",
+    "apiblueprint_view/lib/libdrafter.dylib"
+]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
