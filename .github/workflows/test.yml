@@ -29,6 +29,7 @@ jobs:
           pip install 'Django ${{ matrix.django-version }}'
 
       - name: Check coding standards
+        if: ${{ matrix.python-version != '3.7' }}
         run: make lint
 
       - name: Run tests
