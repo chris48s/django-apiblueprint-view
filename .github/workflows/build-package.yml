@@ -64,3 +64,4 @@ jobs:
         with:
           packages-dir: artifact/
           print-hash: true
+          repository-url: https://test.pypi.org/legacy/
