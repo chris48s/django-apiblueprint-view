@@ -249,14 +249,14 @@ toml = ["tomli"]
 
 [[package]]
 name = "django"
-version = "3.2.21"
+version = "3.2.22"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "Django-3.2.21-py3-none-any.whl", hash = "sha256:d31b06c58aa2cd73998ca5966bc3001243d3c4e77ee2d0c479bced124765fd99"},
-    {file = "Django-3.2.21.tar.gz", hash = "sha256:a5de4c484e7b7418e6d3e52a5b8794f0e6b9f9e4ce3c037018cf1c489fa87f3c"},
+    {file = "Django-3.2.22-py3-none-any.whl", hash = "sha256:c5e7b668025a6e06cad9ba6d4de1fd1a21212acebb51ea34abb400c6e4d33430"},
+    {file = "Django-3.2.22.tar.gz", hash = "sha256:83b6d66b06e484807d778263fdc7f9186d4dc1862fcfa6507830446ac6b060ba"},
 ]
 
 [package.dependencies]
@@ -325,20 +325,15 @@ requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "markdown2"
-version = "2.4.10"
+version = "2.3.10"
 description = "A fast and complete Python implementation of Markdown"
 category = "main"
 optional = false
-python-versions = ">=3.5, <4"
+python-versions = "*"
 files = [
-    {file = "markdown2-2.4.10-py2.py3-none-any.whl", hash = "sha256:e6105800483783831f5dc54f827aa5b44eb137ecef5a70293d8ecfbb4109ecc6"},
-    {file = "markdown2-2.4.10.tar.gz", hash = "sha256:cdba126d90dc3aef6f4070ac342f974d63f415678959329cc7909f96cc235d72"},
+    {file = "markdown2-2.3.10-py2.py3-none-any.whl", hash = "sha256:fef148e5fd68d4532286c3e2943e9d2c076a8ad781b0a70a9d599a0ffe91652d"},
+    {file = "markdown2-2.3.10.tar.gz", hash = "sha256:85956d8119fa6378156fef65545d66705a842819d2e1b50379a2b9d2aaa17cf0"},
 ]
-
-[package.extras]
-all = ["pygments (>=2.7.3)", "wavedrom"]
-code-syntax-highlighting = ["pygments (>=2.7.3)"]
-wavedrom = ["wavedrom"]
 
 [[package]]
 name = "mccabe"
@@ -552,5 +547,5 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=4.6)", "pytest-black (
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.7"
-content-hash = "6dc37fb8061791e56979c7c51e561f21d638f193d080ce7be5c4d628492898e7"
+python-versions = ">=3.7"
+content-hash = "2fdec3b81d492cb820efca59938b2842375b9c70a2e82a742bec0ddfb0053d41"
