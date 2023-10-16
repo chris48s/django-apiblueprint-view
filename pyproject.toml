@@ -9,9 +9,9 @@ repository = "https://github.com/chris48s/django-apiblueprint-view"
 homepage = "https://github.com/chris48s/django-apiblueprint-view"
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 2.2",
-    "Framework :: Django :: 3.2",
-    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 2",
+    "Framework :: Django :: 3",
+    "Framework :: Django :: 4",
 ]
 include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
 exclude = ["apiblueprint_view/tests/**"]
