@@ -16,6 +16,7 @@ classifiers = [
 include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
+build = "build.py"
 
 [tool.poetry.dependencies]
 python = "^3.7"

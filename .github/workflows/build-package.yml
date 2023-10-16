@@ -1,0 +1,66 @@
+name: Build Package
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.16.0
+        env:
+          CIBW_BEFORE_BUILD: yum install -y wget && ./build-drafter.sh
+          CIBW_BUILD: "cp37-manylinux_x86_64"
+        with:
+          package-dir: .
+          output-dir: dist
+          config-file: "pyproject.toml"
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - run: pip install --upgrade pip
+
+      # Poetry automatically assumes the most specific tag
+      # but we don't actually need specific builds
+      # for each python version (3.8, 3.9, etc).
+      # We build one wheel then re-tag it as cp3.
+      - name: Fix wheel tags
+        run: |
+          pip install wheel>=0.40.0
+          wheel tags --python-tag py3 --abi-tag none dist/*.whl --remove
+
+      # build sdist
+      - name: Set up Python 2.7
+        run: ./.github/scripts/setup-python2.7.sh
+      - name: Install dependencies
+        run:
+          pip install poetry
+          make install
+      - name: Build sdist
+        run: poetry build --format sdist
+
+      - run: ls dist
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./dist/*
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.event.ref_type == 'tag'
+    permissions:
+      contents: none
+      id-token: write # required for trusted publishing
+    environment: publish
+    steps:
+      - uses: actions/download-artifact@v3
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: artifact/
+          print-hash: true
