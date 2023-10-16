@@ -1,5 +1,10 @@
 # Changelog
 
+## 📦 [2.4.1](https://pypi.org/project/django-apiblueprint-view/2.4.1/) - 2023-10-16
+
+* Tested on python 3.11, 3.12
+* Convert python and django requirements to open range
+
 ## 📦 [2.4.0](https://pypi.org/project/django-apiblueprint-view/2.4.0/) - 2021-12-07
 
 * Tested on django 4.0
