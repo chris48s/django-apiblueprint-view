@@ -17,4 +17,4 @@ except OSError:
     elif os.path.isfile(_path_linux):
         dm = Draughtsman(_path_linux)
     else:
-        raise Exception("oh noes")
+        raise Exception("Failed to load libdrafter")
