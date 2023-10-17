@@ -3,7 +3,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'macos-11']
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -11,34 +14,44 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.16.0
         env:
-          CIBW_BEFORE_BUILD: yum install -y wget && ./build-drafter.sh
-          CIBW_BUILD: "cp37-manylinux_x86_64"
+          CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
+          CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
+          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_x86_64"
+          CIBW_BUILD_VERBOSITY: 3
         with:
           package-dir: .
           output-dir: dist
           config-file: "pyproject.toml"
 
-      - name: Set up Python 3.7
+      - name: Set up Python 3.8
         uses: actions/setup-python@v4
         with:
-          python-version: 3.7
+          python-version: 3.8
       - run: pip install --upgrade pip
 
       # Poetry automatically assumes the most specific tag
       # but we don't actually need specific builds
       # for each python version (3.8, 3.9, etc).
-      # We build one wheel then re-tag it as cp3.
-      - name: Fix wheel tags
+      # We build one wheel then re-tag it as py3-none.
+      - name: Fix wheel tags (linux)
+        if: startsWith(matrix.os, 'ubuntu')
         run: |
           pip install wheel>=0.40.0
-          wheel tags --python-tag py3 --abi-tag none dist/*.whl --remove
+          wheel tags --python-tag py3 --abi-tag none dist/*linux*.whl --remove
+      - name: Fix wheel tags (mac)
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          pip install wheel>=0.40.0
+          wheel tags --python-tag py3 --abi-tag none dist/*-macosx*.whl --remove
 
-      # build sdist
+      # build sdist, only on linux
       - name: Install dependencies
+        if: startsWith(matrix.os, 'ubuntu')
         run:
           pip install poetry
           make install
       - name: Build sdist
+        if: startsWith(matrix.os, 'ubuntu')
         run: poetry build --format sdist
 
       - run: ls dist

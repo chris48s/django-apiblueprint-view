@@ -4,7 +4,7 @@ help:
 	@grep '^\.PHONY' Makefile | cut -d' ' -f2- | tr ' ' '\n'
 
 build-drafter:
-	./build-drafter.sh
+	./build-drafter.sh linux
 
 format:
 	poetry run isort .

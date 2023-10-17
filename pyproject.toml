@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-apiblueprint-view"
-version = "2.4.1"
+version = "2.5.0b1"
 description = "Render API Blueprints on-the-fly using Django templates"
 authors = ["chris48s"]
 license = "MIT"
@@ -13,7 +13,11 @@ classifiers = [
     "Framework :: Django :: 3",
     "Framework :: Django :: 4",
 ]
-include = ["apiblueprint_view/templates/**", "apiblueprint_view/lib/libdrafter.so"]
+include = [
+    "apiblueprint_view/templates/**",
+    "apiblueprint_view/lib/libdrafter.so",
+    "apiblueprint_view/lib/libdrafter.dylib"
+]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
