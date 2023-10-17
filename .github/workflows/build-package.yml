@@ -16,8 +16,7 @@ jobs:
         env:
           CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
           CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
-          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_arm64"
-          CIBW_ARCHS_MACOS: arm64
+          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_x86_64"
           CIBW_BUILD_VERBOSITY: 3
         with:
           package-dir: .
@@ -30,18 +29,10 @@ jobs:
           python-version: 3.8
       - run: pip install --upgrade pip
 
-      # There are two things happening here
-      #
-      # 1. Poetry automatically assumes the most specific tag
+      # Poetry automatically assumes the most specific tag
       # but we don't actually need specific builds
       # for each python version (3.8, 3.9, etc).
       # We build one wheel then re-tag it as py3-none.
-      #
-      # 2. Cross-compiling wheels for arm and poetry based projects
-      # creates wheels with the wrong platform tag. They are tagged
-      # with the source platform, not the target, so the wheel
-      # manifest + filename will be x86_64 instead of arm64.
-      # We re-tag it as arm64 to fix this.
       - name: Fix wheel tags (linux)
         if: startsWith(matrix.os, 'ubuntu')
         run: |
@@ -51,7 +42,7 @@ jobs:
         if: startsWith(matrix.os, 'macos')
         run: |
           pip install wheel>=0.40.0
-          wheel tags --python-tag py3 --abi-tag none --platform-tag macosx_arm64 dist/*-macosx*.whl --remove
+          wheel tags --python-tag py3 --abi-tag none dist/*-macosx*.whl --remove
 
       # build sdist, only on linux
       - name: Install dependencies

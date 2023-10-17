@@ -12,11 +12,7 @@ platform="$1"
 wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
 tar xvzf drafter-v3.2.7.tar.gz
 cd drafter-v3.2.7
-if [ "$platform" = "mac" ]; then
-    python2.7 configure --shared --dest-cpu arm
-else
-    python2.7 configure --shared
-fi
+python2.7 configure --shared
 make libdrafter
 cd ..
 mkdir -p apiblueprint_view/lib
