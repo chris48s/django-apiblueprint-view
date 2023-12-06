@@ -1,5 +1,9 @@
 # Changelog
 
+## 📦 [2.5.1](https://pypi.org/project/django-apiblueprint-view/2.5.1/) - 2023-12-06
+
+* Tested on Django 5.0
+
 ## 📦 [2.5.0](https://pypi.org/project/django-apiblueprint-view/2.5.0/) - 2023-10-17
 
 * Add wheel with libdrafter compiled for macosx_x86_64
