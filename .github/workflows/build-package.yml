@@ -5,18 +5,26 @@ jobs:
   build:
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'macos-11']
+        os: ['ubuntu-latest', 'macos-11', 'macos-14']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install extras for Mac/arm64
+        if: matrix.os == 'macos-14'
+        run: |
+          python3 -m pip install pipx
+          brew install pyenv
+          pyenv install 2.7.18
+          ln -s /Users/runner/.pyenv/versions/2.7.18/bin/python /usr/local/bin/python2.7
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.16.4
         env:
           CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
           CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
-          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_x86_64"
+          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_x86_64 cp38-macosx_arm64"
           CIBW_BUILD_VERBOSITY: 3
         with:
           package-dir: .
