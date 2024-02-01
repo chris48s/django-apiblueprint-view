@@ -20,7 +20,7 @@ jobs:
           ln -s /Users/runner/.pyenv/versions/2.7.18/bin/python /usr/local/bin/python2.7
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.16.4
+        uses: pypa/cibuildwheel@v2.16.5
         env:
           CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
           CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
