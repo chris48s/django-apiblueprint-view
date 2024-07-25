@@ -47,7 +47,7 @@ jobs:
       # build sdist, only on linux
       - name: Install dependencies
         if: startsWith(matrix.os, 'ubuntu')
-        run:
+        run: |
           pip install poetry
           make install
       - name: Build sdist
