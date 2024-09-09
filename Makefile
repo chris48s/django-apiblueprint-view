@@ -20,4 +20,5 @@ lint:
 
 test:
 	poetry run coverage run --source=apiblueprint_view --omit=apiblueprint_view/tests/*.py ./run_tests.py
+	poetry run coverage report
 	poetry run coverage xml
