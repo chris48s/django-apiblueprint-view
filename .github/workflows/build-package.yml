@@ -21,7 +21,7 @@ jobs:
           pyenv global system 2.7.18
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.20.0
+        uses: pypa/cibuildwheel@v2.21.3
         env:
           CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
           CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
