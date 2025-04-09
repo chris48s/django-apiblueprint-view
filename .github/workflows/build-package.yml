@@ -5,7 +5,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'macos-12']
+        os: ['ubuntu-22.04', 'macos-12']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -71,7 +71,7 @@ jobs:
 
   publish:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     permissions:
       contents: none
