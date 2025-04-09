@@ -24,7 +24,7 @@ packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
 
 [tool.poetry.dependencies]
-python = ">=3.8"
+python = ">=3.7"
 Django = ">=2.2"
 markdown2 = ">=2.3.9"
 cffi = "^1.0.0"
