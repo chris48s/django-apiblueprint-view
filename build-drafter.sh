@@ -9,7 +9,7 @@ fi
 
 platform="$1"
 
-wget https://github.com/apiaryio/drafter/releases/download/v3.2.7/drafter-v3.2.7.tar.gz
+cp vendor/drafter-v3.2.7.tar.gz .
 tar xvzf drafter-v3.2.7.tar.gz
 cd drafter-v3.2.7
 python2.7 configure --shared
