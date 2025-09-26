@@ -11,8 +11,8 @@ classifiers = [
     "Framework :: Django",
 ]
 include = [
-    "apiblueprint_view/templates/**",
-    "apiblueprint_view/lib/libdrafter.so",
+    { path = "apiblueprint_view/templates/**", format = ["sdist", "wheel"] },
+    { path = "apiblueprint_view/lib/libdrafter.so", format = ["sdist", "wheel"] },
 ]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
@@ -32,5 +32,5 @@ black = "==23.3.0"
 coverage = "^7.2"
 
 [build-system]
-requires = ["poetry>=1.0.2"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
