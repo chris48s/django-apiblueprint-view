@@ -22,7 +22,7 @@ build = "build.py"
 python = ">=3.10"
 Django = ">=4.2"
 markdown2 = ">=2.3.9"
-cffi = "^1.0.0"
+cffi = "^2.0.0"
 refract = "==0.4.0"
 
 [tool.poetry.dev-dependencies]
