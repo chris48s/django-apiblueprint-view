@@ -3,29 +3,16 @@ on: [push, pull_request]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: ['ubuntu-22.04', 'macos-13']
-    runs-on: ${{ matrix.os }}
+    runs-on: 'ubuntu-22.04'
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Install python 2.7 on MacOS
-        if: runner.os == 'macOS'
-        run: |
-          brew install pyenv
-          echo "$(pyenv root)/shims" >> $GITHUB_PATH
-          echo "$(pyenv root)/bin" >> $GITHUB_PATH
-          pyenv install 2.7.18
-          pyenv global system 2.7.18
-
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.20.0
         env:
-          CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh linux
-          CIBW_BEFORE_BUILD_MACOS: ./build-drafter.sh mac
-          CIBW_BUILD: "cp38-manylinux_x86_64 cp38-macosx_x86_64"
+          CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh
+          CIBW_BUILD: cp38-manylinux_x86_64
           CIBW_BUILD_VERBOSITY: 3
         with:
           package-dir: .
@@ -42,32 +29,24 @@ jobs:
       # but we don't actually need specific builds
       # for each python version (3.8, 3.9, etc).
       # We build one wheel then re-tag it as py3-none.
-      - name: Fix wheel tags (linux)
-        if: startsWith(matrix.os, 'ubuntu')
+      - name: Fix wheel tags
         run: |
           pip install wheel>=0.40.0
           wheel tags --python-tag py3 --abi-tag none dist/*linux*.whl --remove
-      - name: Fix wheel tags (mac)
-        if: startsWith(matrix.os, 'macos')
-        run: |
-          pip install wheel>=0.40.0
-          wheel tags --python-tag py3 --abi-tag none dist/*-macosx*.whl --remove
 
-      # build sdist, only on linux
+      # build sdist
       - name: Install dependencies
-        if: startsWith(matrix.os, 'ubuntu')
         run: |
           pip install poetry
           make install
       - name: Build sdist
-        if: startsWith(matrix.os, 'ubuntu')
         run: poetry build --format sdist
 
       - run: ls dist
+
       - uses: actions/upload-artifact@v4
         with:
           path: ./dist/*
-          name: artifact-${{ matrix.os }}
 
   publish:
     needs: build
@@ -79,10 +58,6 @@ jobs:
     environment: publish
     steps:
       - uses: actions/download-artifact@v5
-        with:
-          path: artifact
-          pattern: artifact-*
-          merge-multiple: true
 
       - run: ls artifact
 

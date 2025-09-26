@@ -17,7 +17,6 @@ classifiers = [
 include = [
     "apiblueprint_view/templates/**",
     "apiblueprint_view/lib/libdrafter.so",
-    "apiblueprint_view/lib/libdrafter.dylib"
 ]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
