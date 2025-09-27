@@ -1,5 +1,12 @@
 # Changelog
 
+## 📦 [3.0.0](https://pypi.org/project/django-apiblueprint-view/3.0.0/) - 2025-09-27
+
+* Add compatibility with python 3.13
+* Drop compatibility with python < 3.10
+* Drop compatibility with django < 4.2
+* Drop publishing MacOS x86 wheels
+
 ## 📦 [2.5.1](https://pypi.org/project/django-apiblueprint-view/2.5.1/) - 2023-12-06
 
 * Tested on Django 5.0
