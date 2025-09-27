@@ -1,7 +1,11 @@
-.PHONY: help build-drafter format install lint test
+.PHONY: help env build-drafter format install lint test
 
 help:
 	@grep '^\.PHONY' Makefile | cut -d' ' -f2- | tr ' ' '\n'
+
+# usage: source $(make env)
+env:
+	@poetry env activate | cut -d' ' -f2
 
 build-drafter:
 	./build-drafter.sh
