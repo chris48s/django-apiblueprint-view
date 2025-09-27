@@ -14,6 +14,7 @@ jobs:
           CIBW_BEFORE_BUILD_LINUX: yum install -y wget && ./build-drafter.sh
           CIBW_BUILD: cp310-manylinux_x86_64
           CIBW_BUILD_VERBOSITY: 3
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
         with:
           package-dir: .
           output-dir: dist
