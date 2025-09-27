@@ -9,33 +9,28 @@ repository = "https://github.com/chris48s/django-apiblueprint-view"
 homepage = "https://github.com/chris48s/django-apiblueprint-view"
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 2",
-    "Framework :: Django :: 3",
-    "Framework :: Django :: 4",
-    "Framework :: Django :: 5",
 ]
 include = [
-    "apiblueprint_view/templates/**",
-    "apiblueprint_view/lib/libdrafter.so",
-    "apiblueprint_view/lib/libdrafter.dylib"
+    { path = "apiblueprint_view/templates/**", format = ["sdist", "wheel"] },
+    { path = "apiblueprint_view/lib/libdrafter.so", format = ["sdist", "wheel"] },
 ]
 exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
 
 [tool.poetry.dependencies]
-python = ">=3.7"
-Django = ">=2.2"
+python = ">=3.10"
+Django = ">=4.2"
 markdown2 = ">=2.3.9"
-cffi = "^1.0.0"
+cffi = "^2.0.0"
 refract = "==0.4.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.11"
-flake8 = { version = "^7.1.2", python = "^3.8.1" }
+flake8 = "^7.1.2"
 black = "==23.3.0"
 coverage = "^7.2"
 
 [build-system]
-requires = ["poetry>=1.0.2"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
