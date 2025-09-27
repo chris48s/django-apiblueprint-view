@@ -60,6 +60,8 @@ jobs:
     environment: publish
     steps:
       - uses: actions/download-artifact@v5
+        with:
+          path: artifact
 
       - run: ls artifact
 
