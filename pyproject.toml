@@ -27,7 +27,7 @@ packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
 
 [tool.poetry.group.dev.dependencies]
-isort = "6.1.0"
+isort = "7.0.0"
 flake8 = "7.3.0"
 black = "25.9.0"
 coverage = "7.10.7"
