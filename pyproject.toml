@@ -1,6 +1,6 @@
 [project]
 name = "django-apiblueprint-view"
-version = "3.0.0"
+version = "3.0.1"
 description = "Render API Blueprints on-the-fly using Django templates"
 authors = [{name = "chris48s"}]
 license = "MIT"
