@@ -1,15 +1,23 @@
-[tool.poetry]
+[project]
 name = "django-apiblueprint-view"
 version = "3.0.0"
 description = "Render API Blueprints on-the-fly using Django templates"
-authors = ["chris48s"]
+authors = [{name = "chris48s"}]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/chris48s/django-apiblueprint-view"
-homepage = "https://github.com/chris48s/django-apiblueprint-view"
 classifiers = [
     "Framework :: Django",
 ]
+requires-python = ">=3.10"
+dependencies = [
+    "Django>=4.2",
+    "markdown2>=2.3.9",
+    "cffi>=2.0.0",
+    "refract==0.4.0",
+]
+
+[tool.poetry]
+requires-poetry = ">=2.0"
 include = [
     { path = "apiblueprint_view/templates/**", format = ["sdist", "wheel"] },
     { path = "apiblueprint_view/lib/libdrafter.so", format = ["sdist", "wheel"] },
@@ -18,18 +26,15 @@ exclude = ["apiblueprint_view/tests/**"]
 packages = [ {include = "apiblueprint_view"} ]
 build = "build.py"
 
-[tool.poetry.dependencies]
-python = ">=3.10"
-Django = ">=4.2"
-markdown2 = ">=2.3.9"
-cffi = "^2.0.0"
-refract = "==0.4.0"
+[tool.poetry.group.dev.dependencies]
+isort = "6.1.0"
+flake8 = "7.3.0"
+black = "25.9.0"
+coverage = "7.10.7"
 
-[tool.poetry.dev-dependencies]
-isort = "^6.1"
-flake8 = "^7.3.0"
-black = "==25.9.0"
-coverage = "^7.10"
+[project.urls]
+Home = "https://github.com/chris48s/django-apiblueprint-view"
+Source = "https://github.com/chris48s/django-apiblueprint-view"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
