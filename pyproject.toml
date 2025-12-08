@@ -29,7 +29,7 @@ build = "build.py"
 [tool.poetry.group.dev.dependencies]
 isort = "7.0.0"
 flake8 = "7.3.0"
-black = "25.11.0"
+black = "25.12.0"
 coverage = "7.12.0"
 
 [project.urls]
