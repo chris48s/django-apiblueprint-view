@@ -19,9 +19,7 @@ get_schema_json = """{
             }
         }
     }
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 get_schema = (
     """
@@ -52,9 +50,7 @@ patch_schema_json = """{
         }
     },
     "additionalProperties": false
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 patch_schema = (
     """

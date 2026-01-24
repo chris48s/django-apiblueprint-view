@@ -36,8 +36,7 @@ _all_ = ("parse",)
 
 
 ffi = FFI()
-ffi.cdef(
-    """
+ffi.cdef("""
 typedef enum {
     DRAFTER_SERIALIZE_YAML = 0,
     DRAFTER_SERIALIZE_JSON
@@ -50,8 +49,7 @@ typedef struct {
 
 int drafter_parse_blueprint_to(const char* source,
                                char** out, const drafter_options options);
-"""
-)
+""")
 
 
 class Draughtsman:

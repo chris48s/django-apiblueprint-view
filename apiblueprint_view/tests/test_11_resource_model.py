@@ -18,9 +18,7 @@ retrieve_json = """{
   "links": [
     { "rel": "self" , "href": "/message" }
   ]
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 retrieve_resp = (
     """
