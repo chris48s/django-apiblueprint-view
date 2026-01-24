@@ -5,9 +5,7 @@ body_json = """{
     "created": 1415203908,
     "percent_off": 25,
     "redeem_by": null
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 coupon_body = (
     """
@@ -44,9 +42,7 @@ schema_json = """{
   "required": [
     "id"
   ]
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 coupon_schema = (
     """

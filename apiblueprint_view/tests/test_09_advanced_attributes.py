@@ -7,9 +7,7 @@ body_json = """[
     "percent_off": 25,
     "redeem_by": 0
   }
-]""".replace(
-    '"', "&quot;"
-)
+]""".replace('"', "&quot;")
 
 coupons_body = (
     """
@@ -25,9 +23,7 @@ coupons_body = (
 schema_json = """{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "array"
-}""".replace(
-    '"', "&quot;"
-)
+}""".replace('"', "&quot;")
 
 coupons_schema = (
     """
