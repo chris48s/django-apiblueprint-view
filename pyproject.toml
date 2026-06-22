@@ -30,7 +30,7 @@ build = "build.py"
 isort = "8.0.1"
 flake8 = "7.3.0"
 black = "26.5.1"
-coverage = "7.14.1"
+coverage = "7.14.2"
 
 [project.urls]
 Home = "https://github.com/chris48s/django-apiblueprint-view"
